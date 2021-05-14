@@ -26,5 +26,8 @@
     <ClInclude Include="funciones.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="cListaT.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
