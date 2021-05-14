@@ -6,6 +6,7 @@ int main() {
 
 	printf("hola mundo");
 	printf("Chau");
+	printf("Hola");
 
 	system("pause");
 	return 0;
