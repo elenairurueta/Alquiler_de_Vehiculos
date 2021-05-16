@@ -18,5 +18,6 @@ public:
 	cVehiculo();
 	virtual ~cVehiculo();
 	virtual float calcularTarifa() = 0;
+	unsigned int getclave();
 
 };

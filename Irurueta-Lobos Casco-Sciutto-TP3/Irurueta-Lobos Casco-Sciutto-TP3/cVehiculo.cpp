@@ -10,3 +10,8 @@ cVehiculo::~cVehiculo()
 
 }
 
+unsigned int cVehiculo::getclave()
+{
+	return numeroPatente;
+}
+
