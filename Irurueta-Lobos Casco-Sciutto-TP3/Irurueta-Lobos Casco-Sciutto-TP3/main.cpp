@@ -1,15 +1,14 @@
 #include <iostream>
 #include <string>
-#include "cListaAlquileres.h"
+#include "cAutomovil.h"
 using namespace std;
 
 int main() {
 
-	cListaAlquileres *aux = new cListaAlquileres();
-	cAlquiler aux2 = aux[0];
-
+	cAutomovil* automovil = new cAutomovil();
+	cout << automovil << endl;
 	system("pause");
 
-	delete aux;
+	delete automovil;
 	return 0;
 }

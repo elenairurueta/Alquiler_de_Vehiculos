@@ -3,11 +3,11 @@
 class cTrafic :
     public cVehiculo
 {
-
+public:
     cTrafic();
     ~cTrafic();
     string getTipoVehiculo();
-    float calcularTarifa();
+    float calcularTarifa(int cantDias = 1);
 
 };
 

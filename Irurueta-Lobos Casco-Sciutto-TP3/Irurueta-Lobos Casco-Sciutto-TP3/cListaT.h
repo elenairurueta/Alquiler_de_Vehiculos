@@ -108,8 +108,7 @@ void cListaT<T>::Listar(string separador)
 {
 	for (unsigned int i = 0; i < CA; i++)
 	{
-		cout << separador;
-		vector[i]->Imprimir();
+		cout << separador << vector[i];
 	}
 }
 template<class T>

@@ -1,16 +1,15 @@
 #include "cAutomovil.h"
-
+cAutomovil::cAutomovil() :cVehiculo()
+{
+	precioAlquilerXDia = ALQUILER_AUTOMOVILES;
+}
 cAutomovil::~cAutomovil()
 {
 
 }
-cAutomovil::cAutomovil():cVehiculo()
+float cAutomovil::calcularTarifa(int cantDias)
 {
-	precioAlquilerXDia = ALQUILER_AUTOMOVILES;
-}
-float cAutomovil::calcularTarifa()
-{
-	return (precioAlquilerXDia + precioBase);
+	return (precioAlquilerXDia*cantDias + precioBase);
 }
 string cAutomovil::getTipoVehiculo()
 {

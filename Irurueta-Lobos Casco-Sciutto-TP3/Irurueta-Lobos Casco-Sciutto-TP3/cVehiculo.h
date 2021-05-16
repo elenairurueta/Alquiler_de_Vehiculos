@@ -22,8 +22,10 @@ public:
 		unsigned int numeroPoliza = 0, cFecha* ultimoMantenimiento = new cFecha(), float precioAlquilerXDia = 0,
 		const unsigned int capacidadPasajeros = 0, int cantElementosSeguridad = 0, string elementosSeguridad = "");
 	virtual ~cVehiculo();
-	virtual float calcularTarifa() = 0;
-	unsigned int getclave();
+	virtual float calcularTarifa(int cantDias) = 0;
+	string getclave()const;
 	virtual string getTipoVehiculo() = 0;
 	void setPrecioBase(float precio);
+	string toString()const;
 };
+ostream& operator<<(ostream& out, const cVehiculo* vehiculo);

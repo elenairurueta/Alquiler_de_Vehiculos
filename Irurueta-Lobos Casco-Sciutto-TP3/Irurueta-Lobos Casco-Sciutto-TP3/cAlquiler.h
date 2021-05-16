@@ -23,6 +23,9 @@ public:
 		cFecha fechaFinReserva = cFecha(),
 		float montoTotal = 0);
 	~cAlquiler();
-	int getClave()const;
+	string getclave()const;
+	string toString();
 };
+ostream& operator<<(ostream& os, cAlquiler* alquiler);
+
 

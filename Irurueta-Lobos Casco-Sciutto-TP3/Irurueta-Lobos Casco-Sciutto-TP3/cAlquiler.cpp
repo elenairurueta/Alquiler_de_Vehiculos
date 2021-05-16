@@ -17,7 +17,19 @@ cAlquiler::~cAlquiler()
 {
 }
 
-int cAlquiler::getClave()const
+string cAlquiler::getclave()const
 {
-	return codigoReserva;
+	return to_string(codigoReserva);
+}
+
+string cAlquiler::toString()
+{
+	string cadena = "Codigo de Reserva: " + to_string(codigoReserva) + "\nCliente: " + cliente->toString() + "\nVehiculo: " + vehiculo->getTipoVehiculo() + vehiculo->toString();
+	cadena += "\nFecha inicio: " + fechaInicioReserva.toString() + "\nFecha Fin: " + fechaFinReserva.toString() + "\nElementos de Seguridad: " + to_string(cantElementosSeguridad) + "Monto total: " + to_string(montoTotal);
+	return cadena;
+}
+ostream& operator<<(ostream& os, cAlquiler* alquiler)
+{
+	os << alquiler->toString();
+	return os;
 }

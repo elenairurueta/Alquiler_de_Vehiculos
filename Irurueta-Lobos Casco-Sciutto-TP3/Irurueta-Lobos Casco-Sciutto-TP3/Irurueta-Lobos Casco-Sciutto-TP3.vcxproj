@@ -144,6 +144,7 @@
     <ClCompile Include="cCamioneta.cpp" />
     <ClCompile Include="cCliente.cpp" />
     <ClCompile Include="cEmpresa.cpp" />
+    <ClCompile Include="cFecha.cpp" />
     <ClCompile Include="cListaAlquileres.cpp" />
     <ClCompile Include="cMotocicleta.cpp" />
     <ClCompile Include="cTrafic.cpp" />

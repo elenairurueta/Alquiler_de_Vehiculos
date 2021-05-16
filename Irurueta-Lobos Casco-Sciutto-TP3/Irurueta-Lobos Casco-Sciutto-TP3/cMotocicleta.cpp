@@ -13,7 +13,7 @@ string cMotocicleta::getTipoVehiculo()
 	return "motocicleta";
 }
 
-float cMotocicleta::calcularTarifa()
+float cMotocicleta::calcularTarifa(int cantDias)
 {
-	return (precioAlquilerXDia + precioBase);
+	return (precioAlquilerXDia*cantDias + precioBase);
 }

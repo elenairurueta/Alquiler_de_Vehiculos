@@ -14,7 +14,7 @@ string cTrafic::getTipoVehiculo()
 	return "trafic";
 }
 
-float cTrafic::calcularTarifa()
+float cTrafic::calcularTarifa(int cantDias)
 {
-	return (precioAlquilerXDia + precioBase);
+	return (precioAlquilerXDia*cantDias + precioBase);
 }
