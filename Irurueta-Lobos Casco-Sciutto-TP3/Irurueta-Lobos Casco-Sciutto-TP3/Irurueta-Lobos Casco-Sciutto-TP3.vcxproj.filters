@@ -35,5 +35,8 @@
     <ClInclude Include="cVehiculo.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="cFecha.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

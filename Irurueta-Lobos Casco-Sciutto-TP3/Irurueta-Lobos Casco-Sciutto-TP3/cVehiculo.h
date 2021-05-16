@@ -18,4 +18,3 @@ public:
 	virtual float calcularTarifa() = 0;
 
 };
-
