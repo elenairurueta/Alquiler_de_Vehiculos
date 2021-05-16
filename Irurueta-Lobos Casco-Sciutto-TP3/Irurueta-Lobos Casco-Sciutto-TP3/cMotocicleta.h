@@ -4,8 +4,9 @@ class cMotocicleta :
     public cVehiculo
 {
 
-
+    cMotocicleta();
+    ~cMotocicleta();
     string getTipoVehiculo();
-
+    float calcularTarifa();
 };
 

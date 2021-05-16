@@ -163,6 +163,7 @@
     <ClInclude Include="cMotocicleta.h" />
     <ClInclude Include="cTrafic.h" />
     <ClInclude Include="cVehiculo.h" />
+    <ClInclude Include="defines.h" />
     <ClInclude Include="funciones.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

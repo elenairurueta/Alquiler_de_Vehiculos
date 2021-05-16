@@ -28,7 +28,7 @@ public:
 	void Eliminar(const T* item);
 	void Eliminar(unsigned int pos);
 
-	void Listar(string separador);
+	void Listar(string separador = "");
 	T* BuscarItem(string clave);
 	T* getItem(unsigned int pos);
 

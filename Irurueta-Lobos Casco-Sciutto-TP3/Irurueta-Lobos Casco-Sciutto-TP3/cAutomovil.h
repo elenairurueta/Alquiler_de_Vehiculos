@@ -3,8 +3,10 @@
 class cAutomovil :
     public cVehiculo
 {
+    cAutomovil();
+    ~cAutomovil();
 
-
+    float calcularTarifa();
     string getTipoVehiculo();
 };
 

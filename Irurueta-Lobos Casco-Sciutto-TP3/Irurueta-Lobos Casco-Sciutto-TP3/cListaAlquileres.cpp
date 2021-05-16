@@ -1,6 +1,6 @@
 #include "cListaAlquileres.h"
 
-cListaAlquileres::cListaAlquileres(unsigned int TAM) :cListaT(TAM)
+cListaAlquileres::cListaAlquileres(unsigned int TAM):cListaT(TAM)
 {}
 
 cListaAlquileres::~cListaAlquileres()
