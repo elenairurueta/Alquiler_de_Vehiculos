@@ -3,5 +3,8 @@
 class cCamioneta :
     public cVehiculo
 {
+
+    string getTipoVehiculo();
+
 };
 

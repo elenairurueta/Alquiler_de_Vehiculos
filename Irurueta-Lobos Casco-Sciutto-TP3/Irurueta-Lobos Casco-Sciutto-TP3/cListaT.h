@@ -28,7 +28,7 @@ public:
 	void Eliminar(const T* item);
 	void Eliminar(unsigned int pos);
 
-	void Listar();
+	void Listar(string separador);
 	T* BuscarItem(string clave);
 	T* getItem(unsigned int pos);
 
@@ -36,6 +36,12 @@ public:
 
 	unsigned int getCA();
 	unsigned int getTAM();
+
+	T* operator[](unsigned int pos) {
+		if (pos < CA)
+			return vector[pos];
+		return NULL;
+	}
 };
 
 template<class T>
@@ -98,10 +104,11 @@ cListaT<T>::~cListaT()
 }
 
 template<class T>
-void cListaT<T>::Listar()
+void cListaT<T>::Listar(string separador)
 {
 	for (unsigned int i = 0; i < CA; i++)
 	{
+		cout << separador;
 		vector[i]->Imprimir();
 	}
 }
@@ -218,6 +225,5 @@ unsigned int cListaT<T>::getItemPos(string clave)
 
 	return INT_MAX;
 }
-
 
 

@@ -3,5 +3,9 @@
 class cTrafic :
     public cVehiculo
 {
+
+
+    string getTipoVehiculo();
+
 };
 

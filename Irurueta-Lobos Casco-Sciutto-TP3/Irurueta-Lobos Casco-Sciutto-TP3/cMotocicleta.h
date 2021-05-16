@@ -4,5 +4,8 @@ class cMotocicleta :
     public cVehiculo
 {
 
+
+    string getTipoVehiculo();
+
 };
 
