@@ -24,6 +24,30 @@
     <ClCompile Include="cVehiculo.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="cMotocicleta.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="cAutomovil.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="cCamioneta.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="cTrafic.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="cEmpresa.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="cAlquiler.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="cCliente.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="cListaAlquileres.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="funciones.h">
@@ -36,6 +60,30 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="cFecha.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="cMotocicleta.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="cAutomovil.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="cCamioneta.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="cTrafic.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="cEmpresa.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="cAlquiler.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="cCliente.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="cListaAlquileres.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

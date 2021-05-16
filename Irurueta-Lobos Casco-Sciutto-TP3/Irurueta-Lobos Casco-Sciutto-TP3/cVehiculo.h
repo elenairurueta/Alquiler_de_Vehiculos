@@ -1,5 +1,6 @@
 #pragma once
-template<class T>
+#include "cFecha.h"
+
 class cVehiculo
 {
 protected:
@@ -10,7 +11,8 @@ protected:
 	cFecha* ultimoMantenimiento;
 	float precioAlquilerXDia;
 	const unsigned int capacidadPasajeros;
-	T* elementosSeguridad;
+	int cantElementosSeguridad;
+	string elementosSeguridad; //T*?
 
 public:
 	cVehiculo();

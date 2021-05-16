@@ -1,12 +1,12 @@
 #include "cVehiculo.h"
 
-template<class T>
-cVehiculo<T>::cVehiculo()
+cVehiculo::cVehiculo()
 {
+
 }
 
-template<class T>
-cVehiculo<T>::~cVehiculo()
+cVehiculo::~cVehiculo()
 {
+
 }
 
