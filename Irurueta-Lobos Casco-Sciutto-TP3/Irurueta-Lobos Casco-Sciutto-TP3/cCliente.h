@@ -5,6 +5,10 @@ using namespace std;
 
 class cCliente
 {
+	const string nombre;
+	const string DNI;
+	const int telefono;
+
 public:
 
 

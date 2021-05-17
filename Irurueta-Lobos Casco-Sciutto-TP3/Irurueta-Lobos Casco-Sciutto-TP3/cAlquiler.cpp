@@ -4,7 +4,11 @@ cAlquiler::cAlquiler(cCliente* cliente, cVehiculo* vehiculo,
 	int cantElementosSeguridad, cFecha fechaInicioReserva, 
 	cFecha fechaFinReserva, float montoTotal):codigoReserva(cantAlquileres++)
 {
-	fechaInicioReserva.actualizarFecha();
+	cFecha *auxiliar = new cFecha();
+	if (fechaInicioReserva.compararFechas(auxiliar) == 0)
+		fechaInicioReserva.actualizarFecha();
+	delete auxiliar;
+	this->fechaInicioReserva = fechaInicioReserva;
 	this->cliente = cliente;
 	this->vehiculo = vehiculo;
 	this->cantElementosSeguridad = cantElementosSeguridad;
@@ -24,12 +28,27 @@ string cAlquiler::getclave()const
 
 string cAlquiler::toString()
 {
-	string cadena = "Codigo de Reserva: " + to_string(codigoReserva) + "\nCliente: " + cliente->toString() + "\nVehiculo: " + vehiculo->getTipoVehiculo() + vehiculo->toString();
-	cadena += "\nFecha inicio: " + fechaInicioReserva.toString() + "\nFecha Fin: " + fechaFinReserva.toString() + "\nElementos de Seguridad: " + to_string(cantElementosSeguridad) + "Monto total: " + to_string(montoTotal);
+	string cadena = "Codigo de Reserva: " + to_string(codigoReserva);
+	if (cliente != NULL)
+		cadena += "\nCliente: " + cliente->toString(); 
+	if (vehiculo != NULL)
+		cadena += "\nVehiculo: " + vehiculo->getTipoVehiculo() + vehiculo->toString();
+	cadena += "\nFecha inicio: " + fechaInicioReserva.toString() + "\nFecha Fin: ";
+	
+	cFecha* auxiliar = new cFecha();
+	if (fechaFinReserva.compararFechas(auxiliar) == 0)
+		cadena += "No definida";
+	else
+		cadena += fechaFinReserva.toString();
+	delete auxiliar;
+
+	cadena += "\nElementos de Seguridad: " + to_string(cantElementosSeguridad) + "\nMonto total: " + to_string(montoTotal);
 	return cadena;
 }
 ostream& operator<<(ostream& os, cAlquiler* alquiler)
 {
+	if (alquiler == NULL)
+		return os;
 	os << alquiler->toString();
 	return os;
 }
