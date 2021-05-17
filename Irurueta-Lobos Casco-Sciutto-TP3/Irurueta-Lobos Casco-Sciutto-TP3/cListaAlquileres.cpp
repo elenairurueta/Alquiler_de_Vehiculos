@@ -13,6 +13,7 @@ void cListaAlquileres::listarPorTipoVehiculo()
 	cListaAlquileres* listaCamionetas = new cListaAlquileres(CA);
 	cListaAlquileres* listaTrafics = new cListaAlquileres(CA);
 
+	//FIXME: agregar sobrecarga
 	for(int i = 0; i < CA; i++)
 	{
 		if (vector[i]->vehiculo->getTipoVehiculo() == "automovil"){
