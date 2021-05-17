@@ -69,6 +69,8 @@ void cFecha::actualizarFecha()
 }
 int cFecha::compararFechas(cFecha* fechaComparar)
 {
+	if (fechaComparar == NULL)
+		return -2;
 	if (anio > fechaComparar->anio)
 		return -1;
 	else if (anio < fechaComparar->anio)
