@@ -1,8 +1,11 @@
 #include "cMotocicleta.h"
 
-cMotocicleta::cMotocicleta():cVehiculo()
+cMotocicleta::cMotocicleta(unsigned int numeroPatente, unsigned int color, unsigned int numeroChasis,
+	unsigned int numeroPoliza, cFecha* ultimoMantenimiento, float precioAlquilerXDia,
+	const unsigned int capacidadPasajeros, int cantElementosSeguridad, string elementosSeguridad)
+	:cVehiculo(numeroPatente, color, numeroChasis, numeroPoliza, ultimoMantenimiento,
+		precioAlquilerXDia, capacidadPasajeros, cantElementosSeguridad, elementosSeguridad)
 {
-	precioAlquilerXDia = ALQUILER_MOTOCICLETAS;
 }
 cMotocicleta::~cMotocicleta()
 {
