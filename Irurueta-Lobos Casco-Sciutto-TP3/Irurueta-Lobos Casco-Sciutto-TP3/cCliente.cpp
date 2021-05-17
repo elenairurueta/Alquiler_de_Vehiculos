@@ -13,12 +13,12 @@ cCliente::~cCliente()
 {
 }
 
-int cCliente::getclave()
+string cCliente::getclave()
 {
-	return 0;
+	return DNI;
 }
 
 string cCliente::toString()
 {
-	return string();
+	return ("\n\tDNI: " + DNI + "\n\tNombre: " + nombre + "\n\tTelefono: " + telefono);
 }

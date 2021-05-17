@@ -12,7 +12,7 @@ class cCliente
 public:
 	cCliente(string nombre="", string DNI="", string telefono="");
 	~cCliente();
-	int getclave();
+	string getclave();
 	string toString();
 };
 ostream& operator<<(ostream& os, cCliente* cliente);
