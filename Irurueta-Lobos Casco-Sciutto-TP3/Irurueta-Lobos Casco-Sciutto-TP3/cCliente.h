@@ -7,11 +7,11 @@ class cCliente
 {
 	const string nombre;
 	const string DNI;
-	const int telefono;
+	const string telefono;
 
 public:
-
-
+	cCliente(string nombre="", string DNI="", string telefono="");
+	~cCliente();
 	int getclave();
 	string toString();
 };

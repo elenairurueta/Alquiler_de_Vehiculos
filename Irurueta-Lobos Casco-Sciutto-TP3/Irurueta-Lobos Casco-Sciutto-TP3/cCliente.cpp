@@ -5,6 +5,14 @@ ostream& operator<<(ostream& os, cCliente* cliente)
 	return os;
 }
 
+cCliente::cCliente(string nombre, string DNI, string telefono):nombre(nombre),DNI(DNI),telefono(telefono)
+{
+}
+
+cCliente::~cCliente()
+{
+}
+
 int cCliente::getclave()
 {
 	return 0;
