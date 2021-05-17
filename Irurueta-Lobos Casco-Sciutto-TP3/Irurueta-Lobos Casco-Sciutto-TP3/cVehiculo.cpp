@@ -1,4 +1,5 @@
 #include "cVehiculo.h"
+
 int cVehiculo::precioBase = PRECIO_BASE;
 cVehiculo::cVehiculo(unsigned int numeroPatente, unsigned int color, unsigned int numeroChasis,
 	unsigned int numeroPoliza, cFecha* ultimoMantenimiento, float precioAlquilerXDia,

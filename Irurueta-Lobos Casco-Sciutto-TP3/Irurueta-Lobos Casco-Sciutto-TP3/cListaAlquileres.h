@@ -1,8 +1,6 @@
 #pragma once
 #include "cAlquiler.h"
 #include "cListaT.h"
-#include "cVehiculo.h"
-#include "cTrafic.h"
 
 #define TAM_A 10
 

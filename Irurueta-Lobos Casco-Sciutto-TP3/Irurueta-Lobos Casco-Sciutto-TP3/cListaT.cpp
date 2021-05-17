@@ -70,26 +70,15 @@ void cListaT<T>::Listar(string separador)
 template<class T>
 bool cListaT<T>::AgregarItem(T* item)
 {
+	if(item == NULL)throw new exception("El objeto que se esta intentando agregar es NULL");
 	T* i_f = BuscarItem(item->getclave());
 	if (i_f != NULL)throw new exception("Ya se encuentra en la lista");
 
-	if (CA < TAM)
-		vector[CA++] = item;
-	else throw new exception("No hay tamanio suficiente para agregar el item");;
+	if (CA >= TAM)
+		Redimensionalizar();
+	vector[CA++] = item;
 	return true;
 }
-template<class T>
-bool cListaT<T>::AgregarItemOrdenado(const T* item)
-{
-	/*for (unsigned int i = 0; i < CA; i++)
-	{
-	if (vector[i]->getclave() == clave)
-	return vector[i];
-	}
-	*/
-	return false;
-}
-//borrar?
 
 template<class T>
 T* cListaT<T>::Quitar(string clave) {

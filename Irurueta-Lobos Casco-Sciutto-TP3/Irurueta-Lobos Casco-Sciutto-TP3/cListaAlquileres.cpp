@@ -1,10 +1,12 @@
 #include "cListaAlquileres.h"
 
-cListaAlquileres::cListaAlquileres(unsigned int TAM):cListaT(TAM)
-{}
+cListaAlquileres::cListaAlquileres(unsigned int TAM):cListaT<cAlquiler>(TAM)
+{
+}
 
 cListaAlquileres::~cListaAlquileres()
-{}
+{
+}
 
 void cListaAlquileres::listarPorTipoVehiculo()
 {
@@ -13,19 +15,18 @@ void cListaAlquileres::listarPorTipoVehiculo()
 	cListaAlquileres* listaCamionetas = new cListaAlquileres(CA);
 	cListaAlquileres* listaTrafics = new cListaAlquileres(CA);
 
-	//FIXME: agregar sobrecarga
 	for(int i = 0; i < CA; i++)
 	{
 		if (vector[i]->vehiculo->getTipoVehiculo() == "automovil"){
-			listaAutomoviles->AgregarItem(vector[i]); //con sobrecarga??
+			*listaAutomoviles += vector[i];
 		}else if (vector[i]->vehiculo->getTipoVehiculo() == "camioneta") {
-			listaCamionetas->AgregarItem(vector[i]); //con sobrecarga??
+			*listaCamionetas += vector[i];
 
 		}else if (vector[i]->vehiculo->getTipoVehiculo() == "motocicleta") {
-			listaMotocicletas->AgregarItem(vector[i]); //con sobrecarga??
+			*listaMotocicletas += vector[i];
 
 		}else if (vector[i]->vehiculo->getTipoVehiculo() == "trafic") {
-			listaTrafics->AgregarItem(vector[i]); //con sobrecarga??
+			*listaTrafics += vector[i];
 
 		}
 	}
