@@ -13,7 +13,7 @@ public:
 	cCliente(string nombre="", string DNI="", string telefono="");
 	~cCliente();
 	string getclave();
-	string toString();
+	string toString(string separador);
 };
 ostream& operator<<(ostream& os, cCliente* cliente);
 

@@ -1,7 +1,7 @@
 #include "cCliente.h"
 ostream& operator<<(ostream& os, cCliente* cliente)
 {
-	os << cliente->toString();
+	os << cliente->toString("\n");
 	return os;
 }
 
@@ -18,7 +18,7 @@ string cCliente::getclave()
 	return DNI;
 }
 
-string cCliente::toString()
+string cCliente::toString(string separador)
 {
-	return ("\n\tDNI: " + DNI + "\n\tNombre: " + nombre + "\n\tTelefono: " + telefono);
+	return (separador + "DNI: " + DNI + separador + "Nombre: " + nombre + separador + "Telefono: " + telefono);
 }
