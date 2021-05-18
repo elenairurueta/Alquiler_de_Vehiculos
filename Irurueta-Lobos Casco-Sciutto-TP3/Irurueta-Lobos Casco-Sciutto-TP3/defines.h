@@ -4,3 +4,14 @@
 #define ALQUILER_CAMIONETAS 1500
 #define ALQUILER_TRAFICS 1700
 
+#define ESmaxAUTOMOVIL 1
+#define ESmaxMOTOCICLETA 1
+#define ESmaxTRAFIC 2
+#define ESmaxCAMIONETA 2
+
+#define CASCOSmax 2
+#define SILLAS_NINOSmax 3
+#define ASIENTOSmax 3
+#define PORTAEQUIPAJESmax 1
+
+
