@@ -2,9 +2,9 @@
 
 cTrafic::cTrafic(unsigned int numeroPatente, unsigned int color, unsigned int numeroChasis,
 	unsigned int numeroPoliza, cFecha* ultimoMantenimiento, float precioAlquilerXDia,
-	const unsigned int capacidadPasajeros, int cantElementosSeguridad, string elementosSeguridad)
+	const unsigned int capacidadPasajeros, int cantElementosSeguridad)
 	:cVehiculo(numeroPatente, color, numeroChasis, numeroPoliza, ultimoMantenimiento,
-		precioAlquilerXDia, capacidadPasajeros, cantElementosSeguridad, elementosSeguridad)
+		precioAlquilerXDia, capacidadPasajeros, cantElementosSeguridad)
 {
 }
 
@@ -20,4 +20,9 @@ string cTrafic::getTipoVehiculo()
 float cTrafic::calcularTarifa(int cantDias)
 {
 	return (precioAlquilerXDia*cantDias + precioBase);
+}
+
+int cTrafic::getCantidadElementosSeguridad()
+{
+	return cantElementosSeguridad;
 }

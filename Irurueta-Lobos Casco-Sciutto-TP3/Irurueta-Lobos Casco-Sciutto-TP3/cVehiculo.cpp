@@ -3,13 +3,11 @@
 int cVehiculo::precioBase = PRECIO_BASE;
 cVehiculo::cVehiculo(unsigned int numeroPatente, unsigned int color, unsigned int numeroChasis,
 	unsigned int numeroPoliza, cFecha* ultimoMantenimiento, float precioAlquilerXDia,
-	unsigned int capacidadPasajeros, int cantElementosSeguridad, string elementosSeguridad)
-	:numeroPatente(numeroPatente), color(color), numeroChasis(numeroChasis), numeroPoliza(numeroPoliza), capacidadPasajeros(capacidadPasajeros)
+	unsigned int capacidadPasajeros, int cantElementosSeguridad)
+	:numeroPatente(numeroPatente), color(color), numeroChasis(numeroChasis), numeroPoliza(numeroPoliza), capacidadPasajeros(capacidadPasajeros), cantElementosSeguridad(cantElementosSeguridad)
 {
 	this->ultimoMantenimiento = ultimoMantenimiento;
 	this->precioAlquilerXDia = precioAlquilerXDia;
-	this->cantElementosSeguridad = cantElementosSeguridad;
-	this->elementosSeguridad = elementosSeguridad;
 }
 
 cVehiculo::~cVehiculo()
@@ -27,9 +25,9 @@ void cVehiculo::setPrecioBase(float precio)
 {
 	precioBase = precio;
 }
-string cVehiculo::toString()const
+string cVehiculo::toString(string separador)const
 {
-	string cadena = "\n\tPatente: " + to_string(numeroPatente) + "\n\tColor: ";
+	string cadena = separador + "Patente: " + to_string(numeroPatente) + separador + "Color: ";
 	switch (color) {
 	case AMARILLO: cadena += "Amarillo"; break;
 	case LILA: cadena += "Lila"; break;
@@ -37,7 +35,7 @@ string cVehiculo::toString()const
 	case FUCSIA: cadena += "Fucsia"; break;
 	case VERDE: cadena += "Verde"; break;
 	}
-	cadena += "\n\tChasis: " + to_string(numeroChasis) + "\n\tPoliza: " + to_string(numeroPoliza) + "\n\tUltimo Mantenimiento: " + ultimoMantenimiento->toString() + "\n\tPrecio Alquiler: " + to_string(precioAlquilerXDia) + "\n\tPrecio Base: " + to_string(precioBase) + "\n\tCapacidad Pasajeros: " + to_string(capacidadPasajeros) + "\n\tCantidad de Elementos de Seguridad: " + to_string(cantElementosSeguridad) + "\n\tElementos de Seguridad: " + elementosSeguridad;
+	cadena += separador + "Chasis: " + to_string(numeroChasis) + separador + "Poliza: " + to_string(numeroPoliza) + separador + "Ultimo Mantenimiento: " + ultimoMantenimiento->toString() + separador + "Precio Alquiler: " + to_string(precioAlquilerXDia) + "\n\tPrecio Base: " + to_string(precioBase) + "\n\tCapacidad Pasajeros: " + to_string(capacidadPasajeros) + separador + "Cantidad de Elementos de Seguridad: " + to_string(cantElementosSeguridad) + separador + "Elementos de Seguridad: " + elementosSeguridad;
 	return cadena;
 }
 
