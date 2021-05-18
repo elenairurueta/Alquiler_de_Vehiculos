@@ -39,13 +39,7 @@ public:
 		if (pos < CA)
 			return vector[pos];
 		throw new exception("La posicion de la lista a la que se está intentendo acceder no existe");
-	}
-	T**& operator+=(T* derecha) {
-		if (AgregarItem(derecha))
-			return vector;
-		throw new exception("El objeto no se pudo agregar");
-	}
-	
+	}	
 };
 
 template<class T>
@@ -219,4 +213,15 @@ unsigned int cListaT<T>::getItemPos(string clave)
 	return INT_MAX;
 }
 
-
+template<class T>
+cListaT<T>& operator+=(cListaT<T>& lista, T* objeto) {
+	if (lista.AgregarItem(objeto))
+		return lista;
+	throw new exception("El objeto no se pudo agregar");
+}
+template<class T>
+cListaT<T>& operator+(cListaT<T>& lista, T* objeto) {
+	if (lista.AgregarItem(objeto))
+		return lista;
+	throw new exception("El objeto no se pudo agregar");
+}

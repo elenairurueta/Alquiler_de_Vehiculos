@@ -4,10 +4,8 @@
 #include "cListaAlquileres.h"
 
 using namespace std;
-//TODO: Sobrecargar el método suma
 
 int main() {
-
 
 	//UNDONE: prueba operador <<
 	cAutomovil* automovil = new cAutomovil();
@@ -15,12 +13,12 @@ int main() {
 	cAlquiler* alquiler = new cAlquiler();
 	cout << alquiler << endl;
 
-	//UNDONE: prueba operador +=
+	//UNDONE: prueba operador += y +
 	cListaAlquileres* lista = new cListaAlquileres();
-	* lista += alquiler;
+	cAlquiler* otroalquiler = new cAlquiler();
+	(*lista += alquiler) + otroalquiler;
 
 	//UNDONE: prueba operador []
-	cAlquiler* otroalquiler = new cAlquiler();
 	(*lista)[0] = otroalquiler; 
 
 	//UNDONE: prueba tipos vehiculo
