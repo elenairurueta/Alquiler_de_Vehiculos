@@ -1,5 +1,5 @@
 #include "cElementosSeguridad.h"
-cElementosSeguridad::cElementosSeguridad(int tipo, bool agregado, int cantidad)
+cElementosSeguridad::cElementosSeguridad(int tipo, bool agregado, int cantidad, float precio):precio(precio)
 {
 	this->tipo = tipo;
 	this->agregado = agregado;
@@ -39,4 +39,9 @@ void cElementosSeguridad::setAgregado(bool agregado)
 string cElementosSeguridad::toString(string separador)
 {
 	return (separador + "Tipo: " + to_string(tipo) + separador + "Agregado? " + (agregado?("Si" + separador + "Cantidad: " + to_string(cantidad)):"No"));
+}
+
+float cElementosSeguridad::getPrecioTotal()
+{
+	return (precio*cantidad);
 }

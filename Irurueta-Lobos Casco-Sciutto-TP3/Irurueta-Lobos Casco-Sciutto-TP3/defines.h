@@ -14,4 +14,10 @@
 #define ASIENTOSmax 3
 #define PORTAEQUIPAJESmax 1
 
+#define PrecioSILLA 50
+#define PrecioCASCO 50
+#define PrecioPORTAEQUIPAJE 100
+#define PrecioASIENTO 70
+
+
 
