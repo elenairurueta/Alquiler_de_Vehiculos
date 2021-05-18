@@ -27,6 +27,7 @@ public:
 	void Eliminar(const T* item);
 	void Eliminar(unsigned int pos);
 
+	string toString(string separador = "");
 	void Listar(string separador = "");
 	T* BuscarItem(string clave);
 	T* getItem(unsigned int pos);
@@ -102,12 +103,18 @@ cListaT<T>::~cListaT()
 }
 
 template<class T>
-void cListaT<T>::Listar(string separador)
-{
+string cListaT<T>::toString(string separador) {
+	string cadena = "";
 	for (unsigned int i = 0; i < CA; i++)
 	{
-		cout << separador << vector[i];
+		cadena += vector[i]->toString(string separador);
 	}
+	return cadena;
+}
+template<class T>
+void cListaT<T>::Listar(string separador)
+{
+	cout << toString(separador);
 }
 template<class T>
 bool cListaT<T>::AgregarItem(T* item)

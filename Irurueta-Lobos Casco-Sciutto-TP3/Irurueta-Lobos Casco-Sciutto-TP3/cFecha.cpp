@@ -116,7 +116,7 @@ int cFecha::compararFechas(cFecha* fechaComparar)
 }
 
 #pragma region toString e Imprimir
-string cFecha::toString()
+string cFecha::toString(string separador)
 {
 	string fechaStr = "";
 	if (dia < 10) {
@@ -132,7 +132,7 @@ string cFecha::toString()
 	else {
 		fechaStr += to_string(mes);
 	}
-	fechaStr += "/" + to_string(anio) + " - ";
+	fechaStr += "/" + to_string(anio) + separador;
 
 	if (hora < 10) {
 		fechaStr += "0" + to_string(hora);
