@@ -51,6 +51,12 @@
     <ClCompile Include="cFecha.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="cElementosSeguridad.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="cListaElementosSeguridad.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="funciones.h">
@@ -90,6 +96,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="defines.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="cElementosSeguridad.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="cListaElementosSeguridad.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

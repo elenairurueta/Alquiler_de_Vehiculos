@@ -143,9 +143,11 @@
     <ClCompile Include="cAutomovil.cpp" />
     <ClCompile Include="cCamioneta.cpp" />
     <ClCompile Include="cCliente.cpp" />
+    <ClCompile Include="cElementosSeguridad.cpp" />
     <ClCompile Include="cEmpresa.cpp" />
     <ClCompile Include="cFecha.cpp" />
     <ClCompile Include="cListaAlquileres.cpp" />
+    <ClCompile Include="cListaElementosSeguridad.cpp" />
     <ClCompile Include="cMotocicleta.cpp" />
     <ClCompile Include="cTrafic.cpp" />
     <ClCompile Include="cVehiculo.cpp" />
@@ -157,9 +159,11 @@
     <ClInclude Include="cAutomovil.h" />
     <ClInclude Include="cCamioneta.h" />
     <ClInclude Include="cCliente.h" />
+    <ClInclude Include="cElementosSeguridad.h" />
     <ClInclude Include="cEmpresa.h" />
     <ClInclude Include="cFecha.h" />
     <ClInclude Include="cListaAlquileres.h" />
+    <ClInclude Include="cListaElementosSeguridad.h" />
     <ClInclude Include="cListaT.h" />
     <ClInclude Include="cMotocicleta.h" />
     <ClInclude Include="cTrafic.h" />
