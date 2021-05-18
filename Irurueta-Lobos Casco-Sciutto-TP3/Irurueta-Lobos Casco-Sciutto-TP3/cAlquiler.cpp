@@ -1,8 +1,7 @@
 #include "cAlquiler.h"
 int cAlquiler::cantAlquileres = 0;
-cAlquiler::cAlquiler(cCliente* cliente, cVehiculo* vehiculo, 
-	int cantElementosSeguridad, cFecha fechaInicioReserva, 
-	cFecha fechaFinReserva, float montoTotal):codigoReserva(cantAlquileres++)
+cAlquiler::cAlquiler(cCliente* cliente, cVehiculo* vehiculo, cFecha fechaInicioReserva, 
+	cFecha fechaFinReserva, float montoTotal, cListaElementosSeguridad* listaElementosSeguridad):codigoReserva(cantAlquileres++)
 {
 	cFecha *auxiliar = new cFecha();
 	if (fechaInicioReserva.compararFechas(auxiliar) == 0)
@@ -11,7 +10,9 @@ cAlquiler::cAlquiler(cCliente* cliente, cVehiculo* vehiculo,
 	this->fechaInicioReserva = fechaInicioReserva;
 	this->cliente = cliente;
 	this->vehiculo = vehiculo;
-	this->cantElementosSeguridad = cantElementosSeguridad;
+	if ((listaElementosSeguridad == NULL) && (vehiculo != NULL))
+		listaElementosSeguridad = new cListaElementosSeguridad(vehiculo->getTipoVehiculo(), vehiculo->getCantidadElementosSeguridad());
+	this->listaElementosSeguridad = listaElementosSeguridad;
 	this->fechaInicioReserva = fechaInicioReserva;
 	this->fechaFinReserva = fechaFinReserva;
 	this->montoTotal = montoTotal;
@@ -26,14 +27,14 @@ string cAlquiler::getclave()const
 	return to_string(codigoReserva);
 }
 
-string cAlquiler::toString()
+string cAlquiler::toString(string separador)
 {
-	string cadena = "Codigo de Reserva: " + to_string(codigoReserva);
+	string cadena = separador + "Codigo de Reserva: " + to_string(codigoReserva);
 	if (cliente != NULL)
-		cadena += "\nCliente: " + cliente->toString(); 
+		cadena += separador + "Cliente: " + cliente->toString("\n");
 	if (vehiculo != NULL)
-		cadena += "\nVehiculo: " + vehiculo->getTipoVehiculo() + vehiculo->toString();
-	cadena += "\nFecha inicio: " + fechaInicioReserva.toString() + "\nFecha Fin: ";
+		cadena += separador + "Vehiculo: " + vehiculo->getTipoVehiculo() + vehiculo->toString();
+	cadena += separador + "Fecha inicio: " + fechaInicioReserva.toString() + separador + "Fecha Fin: ";
 	
 	cFecha* auxiliar = new cFecha();
 	if (fechaFinReserva.compararFechas(auxiliar) == 0)
@@ -42,8 +43,48 @@ string cAlquiler::toString()
 		cadena += fechaFinReserva.toString();
 	delete auxiliar;
 
-	cadena += "\nElementos de Seguridad: " + to_string(cantElementosSeguridad) + "\nMonto total: " + to_string(montoTotal);
+	cadena += separador + "Elementos de Seguridad: " + listaElementosSeguridad->toString() + separador + "Monto total: " + to_string(montoTotal);
 	return cadena;
+}
+void cAlquiler::agregarElementoSeguridad(int elemento, int cantidad)
+{
+	string elementoAgregar = "";
+	switch (elemento)
+	{ //TODO: hacer defines CANT_CASCOS_MAX 
+	case CASCO:
+		elementoAgregar = "casco";
+		if (cantidad > CASCOSmax)
+			cantidad = CASCOSmax;
+		if (cantidad < 0)
+			cantidad = 0;
+		break;
+	case SILLA_NINOS:
+		elementoAgregar = "silla ninos";
+		if (cantidad > SILLAS_NINOSmax)
+			cantidad = SILLAS_NINOSmax;
+		if (cantidad < 0)
+			cantidad = 0;
+		break;
+	case PORTAEQUIPAJE:
+		elementoAgregar = "portaequipaje";
+		if (cantidad > PORTAEQUIPAJESmax)
+			cantidad = PORTAEQUIPAJESmax;
+		if (cantidad < 0)
+			cantidad = 0;
+		break;
+	case ASIENTOS_REVERSIBLES:
+		elementoAgregar = "asientos reversibles";
+		if (cantidad > ASIENTOSmax)
+			cantidad = ASIENTOSmax;
+		if (cantidad < 0)
+			cantidad = 0;
+		break;
+	default:
+		elementoAgregar = "";
+	}
+	cElementosSeguridad* ptrElemento = listaElementosSeguridad->BuscarItem(elementoAgregar);
+	ptrElemento->setCantidad(cantidad);
+	ptrElemento->setAgregado(true);
 }
 ostream& operator<<(ostream& os, cAlquiler* alquiler)
 {
