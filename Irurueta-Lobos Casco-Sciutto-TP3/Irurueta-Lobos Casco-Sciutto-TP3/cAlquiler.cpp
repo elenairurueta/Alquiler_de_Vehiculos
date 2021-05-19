@@ -86,6 +86,14 @@ void cAlquiler::agregarElementoSeguridad(int elemento, int cantidad)
 	ptrElemento->setCantidad(cantidad);
 	ptrElemento->setAgregado(true);
 }
+float cAlquiler::calcularMontoTotal()
+{
+	float monto = 0;
+	unsigned int dias = fechaInicioReserva.calcularDiasDiferencia(&fechaFinReserva);
+	monto += vehiculo->calcularTarifa(dias);
+	monto += listaElementosSeguridad->calcularTarifa(dias);
+	return monto;
+}
 ostream& operator<<(ostream& os, cAlquiler* alquiler)
 {
 	if (alquiler == NULL)

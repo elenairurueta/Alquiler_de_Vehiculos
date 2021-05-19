@@ -26,3 +26,11 @@ cListaElementosSeguridad::cListaElementosSeguridad(string tipoVehiculo, int cant
 cListaElementosSeguridad::~cListaElementosSeguridad()
 {
 }
+
+float cListaElementosSeguridad::calcularTarifa(unsigned int dias)
+{
+	float acum = 0;
+	for (unsigned int i = 0; i < CA; i++)
+		acum += vector[i]->getPrecioTotal();
+	return (acum*dias);
+}

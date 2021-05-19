@@ -115,6 +115,31 @@ int cFecha::compararFechas(cFecha* fechaComparar)
 	return -2;
 }
 
+unsigned int cFecha::calcularDiasDiferencia(cFecha* fechaComparar)
+{ //diferencia = fechaActual - fechaComparar
+	tm fechaActual;
+	fechaActual.tm_year = this->anio;
+	fechaActual.tm_mon = this->mes;
+	fechaActual.tm_mday = this->dia;
+	fechaActual.tm_hour = this->hora;
+	fechaActual.tm_min = this->minutos;
+	fechaActual.tm_sec = this->segundos;
+
+	tm fechaComparacion;
+	fechaComparacion.tm_year = fechaComparar->anio;
+	fechaComparacion.tm_mon = fechaComparar->mes;
+	fechaComparacion.tm_mday = fechaComparar->dia;
+	fechaComparacion.tm_hour = fechaComparar->hora;
+	fechaComparacion.tm_min = fechaComparar->minutos;
+	fechaComparacion.tm_sec = fechaComparar->segundos;
+
+	float dias = float(difftime(mktime(&fechaActual), mktime(&fechaComparacion)) / (60 * 60 * 24));
+	if (!dias % 1) //TODO: verificar
+		dias++;
+
+	return unsigned int(dias);
+}
+
 #pragma region toString e Imprimir
 string cFecha::toString(string separador)
 {

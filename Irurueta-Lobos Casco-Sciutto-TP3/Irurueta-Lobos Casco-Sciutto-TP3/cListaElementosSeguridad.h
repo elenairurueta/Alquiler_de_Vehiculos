@@ -8,5 +8,6 @@ class cListaElementosSeguridad :
 public:
     cListaElementosSeguridad(string tipoVehiculo, int cantidadElementos);
     ~cListaElementosSeguridad();
+    float calcularTarifa(unsigned int dias);
 };
 

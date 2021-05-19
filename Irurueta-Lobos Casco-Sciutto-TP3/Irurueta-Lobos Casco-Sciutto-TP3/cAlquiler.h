@@ -27,6 +27,7 @@ public:
 	string getclave()const;
 	string toString(string separador= "\n");
 	void agregarElementoSeguridad(int elemento, int cantidad);
+	float calcularMontoTotal();
 };
 ostream& operator<<(ostream& os, cAlquiler* alquiler);
 

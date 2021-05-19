@@ -29,6 +29,9 @@ public:
 	void actualizarFecha();
 	//devuelve -1 si fechaComparar es más antigua, 1 si es más reciente y 0 si son iguales
 	int compararFechas(cFecha* fechaComparar);
+	//devuelve la cantidad de días que pasaron entre una fecha y la otra (redondeando para arriba)
+	unsigned int calcularDiasDiferencia(cFecha* fechaComparar);
+
 private:
 	//verifica que la fecha sea factible
 	void verificarFecha();
