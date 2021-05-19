@@ -168,6 +168,7 @@
     <ClInclude Include="cMotocicleta.h" />
     <ClInclude Include="cTrafic.h" />
     <ClInclude Include="cVehiculo.h" />
+    <ClInclude Include="datosVehiculos.h" />
     <ClInclude Include="defines.h" />
     <ClInclude Include="funciones.h" />
   </ItemGroup>

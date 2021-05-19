@@ -8,7 +8,6 @@ cAlquiler::cAlquiler(cCliente* cliente, cVehiculo* vehiculo, cFecha fechaInicioR
 		fechaInicioReserva.actualizarFecha();
 	delete auxiliar;
 	this->fechaInicioReserva = fechaInicioReserva;
-
 	if(cliente != NULL)
 		this->cliente = cliente;
 	this->vehiculo = vehiculo;

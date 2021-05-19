@@ -1,8 +1,8 @@
 #include "cVehiculo.h"
 
 int cVehiculo::precioBase = PRECIO_BASE;
-cVehiculo::cVehiculo(unsigned int numeroPatente, unsigned int color, unsigned int numeroChasis,
-	unsigned int numeroPoliza, cFecha* ultimoMantenimiento, float precioAlquilerXDia,
+cVehiculo::cVehiculo(string numeroPatente, unsigned int color, string numeroChasis,
+	string numeroPoliza, cFecha* ultimoMantenimiento, float precioAlquilerXDia,
 	unsigned int capacidadPasajeros, int cantElementosSeguridad, const float precioVehiculo)
 	:numeroPatente(numeroPatente), color(color), numeroChasis(numeroChasis), 
 	numeroPoliza(numeroPoliza), capacidadPasajeros(capacidadPasajeros), 

@@ -104,5 +104,8 @@
     <ClInclude Include="cListaElementosSeguridad.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="datosVehiculos.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

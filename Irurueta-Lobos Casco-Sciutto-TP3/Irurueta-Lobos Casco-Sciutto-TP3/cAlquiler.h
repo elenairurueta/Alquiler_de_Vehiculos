@@ -22,8 +22,7 @@ public:
 		cFecha fechaInicioReserva = cFecha(),
 		cFecha fechaFinReserva = cFecha(),
 		float montoTotal = 0,
-		cListaElementosSeguridad* listaElementosSeguridad = NULL,
-		float precioVehiculo = );
+		cListaElementosSeguridad* listaElementosSeguridad = NULL);
 	~cAlquiler();
 	string getclave()const;
 	string toString(string separador= "\n");

@@ -6,8 +6,8 @@ class cAutomovil :
     static string pasosMantenimiento;
 
 public:
-    cAutomovil(unsigned int numeroPatente = 0, unsigned int color = 0, unsigned int numeroChasis = 0,
-        unsigned int numeroPoliza = 0, cFecha* ultimoMantenimiento = new cFecha(), float precioAlquilerXDia = ALQUILER_AUTOMOVILES,
+    cAutomovil(string numeroPatente = "", unsigned int color = 0, string numeroChasis = "",
+        string numeroPoliza = "", cFecha* ultimoMantenimiento = new cFecha(), float precioAlquilerXDia = ALQUILER_AUTOMOVILES,
         const unsigned int capacidadPasajeros = 0, int cantElementosSeguridad = ESmaxAUTOMOVIL, float precioVehiculo = PrecioCompraAUTOMOVIL);
     ~cAutomovil();
     string getTipoVehiculo();
