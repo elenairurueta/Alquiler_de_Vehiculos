@@ -16,6 +16,11 @@ cVehiculo::~cVehiculo()
 		delete ultimoMantenimiento;
 }
 
+float cVehiculo::calcularTarifa(int cantDias)
+{
+	return (precioAlquilerXDia * cantDias + precioBase);
+}
+
 string cVehiculo::getclave()const
 {
 	return to_string(numeroPatente);
@@ -37,6 +42,16 @@ string cVehiculo::toString(string separador)const
 	}
 	cadena += separador + "Chasis: " + to_string(numeroChasis) + separador + "Poliza: " + to_string(numeroPoliza) + separador + "Ultimo Mantenimiento: " + ultimoMantenimiento->toString() + separador + "Precio Alquiler: " + to_string(precioAlquilerXDia) + "\n\tPrecio Base: " + to_string(precioBase) + "\n\tCapacidad Pasajeros: " + to_string(capacidadPasajeros);
 	return cadena;
+}
+
+int cVehiculo::getCantidadElementosSeguridad()
+{
+	return cantElementosSeguridad;
+}
+
+void cVehiculo::actualizarUltimoMantenimiento()
+{
+	ultimoMantenimiento->actualizarFecha();
 }
 
 

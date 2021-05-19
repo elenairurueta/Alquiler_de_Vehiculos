@@ -11,8 +11,7 @@ public:
         const unsigned int capacidadPasajeros = 0, int cantElementosSeguridad = ESmaxMOTOCICLETA);
     ~cMotocicleta();
     string getTipoVehiculo();
-    float calcularTarifa(int cantDias = 1);
-    int getCantidadElementosSeguridad();
+
 
 };
 

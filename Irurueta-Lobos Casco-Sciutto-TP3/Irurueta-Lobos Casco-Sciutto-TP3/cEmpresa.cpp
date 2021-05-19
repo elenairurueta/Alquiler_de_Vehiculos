@@ -23,7 +23,17 @@ cEmpresa::~cEmpresa()
 		delete listaClientes;
 }
 
-void cEmpresa::pasosMantenimiento()
+void cEmpresa::pasosMantenimiento(cVehiculo* vehiculo)
 {
-	//TODO
+	if((vehiculo->getTipoVehiculo()).compare("automovil")==0)
+		cout << "\n\nPasos Mantenimiento AUTOMOVIL" << cAutomovil::getPasosMantenimiento() << endl;	
+	else if ((vehiculo->getTipoVehiculo()).compare("camioneta") == 0)
+		cout << "\n\nPasos Mantenimiento CAMIONETA" << cCamioneta::getPasosMantenimiento() << endl;
+	else if ((vehiculo->getTipoVehiculo()).compare("motocicleta") == 0)
+		cout << "\n\nPasos Mantenimiento MOTOCICLETA" << cMotocicleta::getPasosMantenimiento() << endl;
+	else if ((vehiculo->getTipoVehiculo()).compare("trafic") == 0)
+		cout << "\n\nPasos Mantenimiento TRAFIC" << cTrafic::getPasosMantenimiento() << endl;
+
+	cout << "\n\nVehiculo en mantenimiento: " << vehiculo << endl;
+	vehiculo->
 }

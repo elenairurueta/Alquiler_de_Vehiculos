@@ -21,11 +21,12 @@ public:
 		unsigned int numeroPoliza = 0, cFecha* ultimoMantenimiento = new cFecha(), float precioAlquilerXDia = 0,
 		const unsigned int capacidadPasajeros = 0, int cantElementosSeguridad = 0);
 	virtual ~cVehiculo();
-	virtual float calcularTarifa(int cantDias) = 0;
+	float calcularTarifa(int cantDias);
 	string getclave()const;
 	virtual string getTipoVehiculo() = 0;
 	void setPrecioBase(float precio);
 	string toString(string separador = "\n")const;
-	virtual int getCantidadElementosSeguridad() = 0;
+	int getCantidadElementosSeguridad();
+	void actualizarUltimoMantenimiento();
 };
 ostream& operator<<(ostream& out, const cVehiculo* vehiculo);

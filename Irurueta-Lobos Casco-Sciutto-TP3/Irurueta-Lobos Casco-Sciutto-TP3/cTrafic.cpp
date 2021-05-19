@@ -17,13 +17,3 @@ string cTrafic::getTipoVehiculo()
 {
 	return "trafic";
 }
-
-float cTrafic::calcularTarifa(int cantDias)
-{
-	return (precioAlquilerXDia*cantDias + precioBase);
-}
-
-int cTrafic::getCantidadElementosSeguridad()
-{
-	return cantElementosSeguridad;
-}

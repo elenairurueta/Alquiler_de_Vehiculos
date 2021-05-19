@@ -12,16 +12,8 @@ cAutomovil::~cAutomovil()
 {
 
 }
-float cAutomovil::calcularTarifa(int cantDias)
-{
-	return (precioAlquilerXDia*cantDias + precioBase);
-}
 string cAutomovil::getTipoVehiculo()
 {
 	return "automovil";
 }
 
-int cAutomovil::getCantidadElementosSeguridad()
-{
-	return cantElementosSeguridad;
-}

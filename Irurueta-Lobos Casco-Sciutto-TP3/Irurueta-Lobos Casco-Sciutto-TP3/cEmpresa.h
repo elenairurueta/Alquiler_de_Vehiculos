@@ -1,6 +1,9 @@
 #pragma once
 #include "cListaT.h"
-#include "cVehiculo.h"
+#include "cAutomovil.h"
+#include "cCamioneta.h"
+#include "cTrafic.h"
+#include "cMotocicleta.h"
 #include "cListaAlquileres.h"
 #include "cCliente.h"
 
