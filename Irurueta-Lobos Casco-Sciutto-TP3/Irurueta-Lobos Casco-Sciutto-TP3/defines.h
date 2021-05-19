@@ -19,5 +19,8 @@
 #define PrecioPORTAEQUIPAJE 100
 #define PrecioASIENTO 70
 
-
+const string pasosMantenimientoAUTOMOVIL = "";
+const string pasosMantenimientoMOTOCICLETA = "";
+const string pasosMantenimientoCAMIONETA = "";
+const string pasosMantenimientoTRAFIC = "";
 

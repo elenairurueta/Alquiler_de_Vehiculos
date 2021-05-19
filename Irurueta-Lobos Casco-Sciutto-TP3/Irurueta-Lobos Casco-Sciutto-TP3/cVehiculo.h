@@ -15,12 +15,11 @@ protected:
 	static int precioBase;
 	const unsigned int capacidadPasajeros;
 	const int cantElementosSeguridad;
-	const string pasosMantenimiento;
 
 public:
 	cVehiculo(unsigned int numeroPatente = 0, unsigned int color = 0, unsigned int numeroChasis = 0, 
 		unsigned int numeroPoliza = 0, cFecha* ultimoMantenimiento = new cFecha(), float precioAlquilerXDia = 0,
-		const unsigned int capacidadPasajeros = 0, int cantElementosSeguridad = 0, const string pasosMantenimiento = "");
+		const unsigned int capacidadPasajeros = 0, int cantElementosSeguridad = 0);
 	virtual ~cVehiculo();
 	virtual float calcularTarifa(int cantDias) = 0;
 	string getclave()const;

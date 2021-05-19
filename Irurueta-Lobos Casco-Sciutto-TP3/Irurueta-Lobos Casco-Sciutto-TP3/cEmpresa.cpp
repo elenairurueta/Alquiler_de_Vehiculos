@@ -22,3 +22,8 @@ cEmpresa::~cEmpresa()
 	if (listaClientes != NULL)
 		delete listaClientes;
 }
+
+void cEmpresa::pasosMantenimiento()
+{
+	listaVehiculos->
+}

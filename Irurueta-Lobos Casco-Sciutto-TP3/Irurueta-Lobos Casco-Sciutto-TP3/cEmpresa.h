@@ -13,6 +13,6 @@ class cEmpresa
 public:
 	cEmpresa(cListaT<cVehiculo>* listaVehiculos = NULL, cListaAlquileres* listaAlquileres = NULL, cListaT<cCliente>* listaClientes = NULL);
 	~cEmpresa();
-
+	void pasosMantenimiento();
 };
 
