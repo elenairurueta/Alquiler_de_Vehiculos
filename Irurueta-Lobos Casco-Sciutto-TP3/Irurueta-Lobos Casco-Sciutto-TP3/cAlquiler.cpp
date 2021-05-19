@@ -43,14 +43,16 @@ string cAlquiler::toString(string separador)
 		cadena += fechaFinReserva.toString();
 	delete auxiliar;
 
-	cadena += separador + "Elementos de Seguridad: " + listaElementosSeguridad->toString() + separador + "Monto total: " + to_string(montoTotal);
+	if (listaElementosSeguridad != NULL)
+		cadena += separador + "Elementos de Seguridad: " + listaElementosSeguridad->toString();
+	cadena += separador + "Monto total: " + to_string(montoTotal);
 	return cadena;
 }
 void cAlquiler::agregarElementoSeguridad(int elemento, int cantidad)
 {
 	string elementoAgregar = "";
 	switch (elemento)
-	{ //TODO: hacer defines CANT_CASCOS_MAX 
+	{ 
 	case CASCO:
 		elementoAgregar = "casco";
 		if (cantidad > CASCOSmax)

@@ -35,7 +35,7 @@ string cVehiculo::toString(string separador)const
 	case FUCSIA: cadena += "Fucsia"; break;
 	case VERDE: cadena += "Verde"; break;
 	}
-	cadena += separador + "Chasis: " + to_string(numeroChasis) + separador + "Poliza: " + to_string(numeroPoliza) + separador + "Ultimo Mantenimiento: " + ultimoMantenimiento->toString() + separador + "Precio Alquiler: " + to_string(precioAlquilerXDia) + "\n\tPrecio Base: " + to_string(precioBase) + "\n\tCapacidad Pasajeros: " + to_string(capacidadPasajeros) + separador + "Cantidad de Elementos de Seguridad: " + to_string(cantElementosSeguridad) + separador + "Elementos de Seguridad: " + elementosSeguridad;
+	cadena += separador + "Chasis: " + to_string(numeroChasis) + separador + "Poliza: " + to_string(numeroPoliza) + separador + "Ultimo Mantenimiento: " + ultimoMantenimiento->toString() + separador + "Precio Alquiler: " + to_string(precioAlquilerXDia) + "\n\tPrecio Base: " + to_string(precioBase) + "\n\tCapacidad Pasajeros: " + to_string(capacidadPasajeros);
 	return cadena;
 }
 

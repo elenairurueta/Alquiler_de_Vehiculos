@@ -107,7 +107,7 @@ string cListaT<T>::toString(string separador) {
 	string cadena = "";
 	for (unsigned int i = 0; i < CA; i++)
 	{
-		cadena += vector[i]->toString(string separador);
+		cadena += vector[i]->toString(separador);
 	}
 	return cadena;
 }
