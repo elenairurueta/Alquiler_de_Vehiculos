@@ -107,5 +107,8 @@
     <ClInclude Include="datosVehiculos.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="datosClientes.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

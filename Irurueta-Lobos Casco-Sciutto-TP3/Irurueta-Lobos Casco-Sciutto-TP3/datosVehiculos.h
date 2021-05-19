@@ -104,7 +104,7 @@ const string PATENTES[cantVehiculos] = {
 	"ZUI419",
 	"VSP512" };
 
-const string NUMEROSDECHASIS[cantVehiculos]{
+const string NUMEROSDECHASIS[cantVehiculos] = {
 	"36KH9VS7L906UM44W",
 	"68KO3MJ6O736FQ92Y",
 	"73FH2YC0Y924BF66V",
@@ -206,7 +206,7 @@ const string NUMEROSDECHASIS[cantVehiculos]{
 	"85LN8HK6A802GH90T",
 	"00VC8XU7O662WM48M" };
 
-const string NUMEROPOLIZA[cantVehiculos]{
+const string NUMEROPOLIZA[cantVehiculos] = {
 	"956968244",
 	"484238038",
 	"012032002",
