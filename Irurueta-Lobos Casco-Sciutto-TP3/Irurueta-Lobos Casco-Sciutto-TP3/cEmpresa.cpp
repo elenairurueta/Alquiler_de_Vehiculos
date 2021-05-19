@@ -35,5 +35,5 @@ void cEmpresa::pasosMantenimiento(cVehiculo* vehiculo)
 		cout << "\n\nPasos Mantenimiento TRAFIC" << cTrafic::getPasosMantenimiento() << endl;
 
 	cout << "\n\nVehiculo en mantenimiento: " << vehiculo << endl;
-	vehiculo->
+	vehiculo->actualizarUltimoMantenimiento();
 }
