@@ -3,8 +3,10 @@
 int cVehiculo::precioBase = PRECIO_BASE;
 cVehiculo::cVehiculo(unsigned int numeroPatente, unsigned int color, unsigned int numeroChasis,
 	unsigned int numeroPoliza, cFecha* ultimoMantenimiento, float precioAlquilerXDia,
-	unsigned int capacidadPasajeros, int cantElementosSeguridad)
-	:numeroPatente(numeroPatente), color(color), numeroChasis(numeroChasis), numeroPoliza(numeroPoliza), capacidadPasajeros(capacidadPasajeros), cantElementosSeguridad(cantElementosSeguridad)
+	unsigned int capacidadPasajeros, int cantElementosSeguridad, const float precioVehiculo)
+	:numeroPatente(numeroPatente), color(color), numeroChasis(numeroChasis), 
+	numeroPoliza(numeroPoliza), capacidadPasajeros(capacidadPasajeros), 
+	cantElementosSeguridad(cantElementosSeguridad), precioVehiculo(precioVehiculo)
 {
 	this->ultimoMantenimiento = ultimoMantenimiento;
 	this->precioAlquilerXDia = precioAlquilerXDia;
@@ -52,6 +54,11 @@ int cVehiculo::getCantidadElementosSeguridad()
 void cVehiculo::actualizarUltimoMantenimiento()
 {
 	ultimoMantenimiento->actualizarFecha();
+}
+
+float cVehiculo::getPrecioCompraVehiculo() const
+{
+	return precioVehiculo;
 }
 
 

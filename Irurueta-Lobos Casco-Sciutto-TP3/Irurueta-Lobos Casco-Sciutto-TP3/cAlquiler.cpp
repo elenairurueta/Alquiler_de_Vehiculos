@@ -8,7 +8,9 @@ cAlquiler::cAlquiler(cCliente* cliente, cVehiculo* vehiculo, cFecha fechaInicioR
 		fechaInicioReserva.actualizarFecha();
 	delete auxiliar;
 	this->fechaInicioReserva = fechaInicioReserva;
-	this->cliente = cliente;
+
+	if(cliente != NULL)
+		this->cliente = cliente;
 	this->vehiculo = vehiculo;
 	if ((listaElementosSeguridad == NULL) && (vehiculo != NULL))
 		listaElementosSeguridad = new cListaElementosSeguridad(vehiculo->getTipoVehiculo(), vehiculo->getCantidadElementosSeguridad());
@@ -88,13 +90,18 @@ void cAlquiler::agregarElementoSeguridad(int elemento, int cantidad)
 	ptrElemento->setCantidad(cantidad);
 	ptrElemento->setAgregado(true);
 }
-float cAlquiler::calcularMontoTotal()
+float cAlquiler::actualizarMontoTotal()
 {
 	float monto = 0;
 	unsigned int dias = fechaInicioReserva.calcularDiasDiferencia(&fechaFinReserva);
 	monto += vehiculo->calcularTarifa(dias);
 	monto += listaElementosSeguridad->calcularTarifa(dias);
-	return monto;
+	this->montoTotal = monto;
+	return montoTotal;
+}
+cCliente* cAlquiler::getCliente()
+{
+	return cliente;
 }
 ostream& operator<<(ostream& os, cAlquiler* alquiler)
 {

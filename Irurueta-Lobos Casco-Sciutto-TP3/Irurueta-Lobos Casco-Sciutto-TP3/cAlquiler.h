@@ -22,12 +22,14 @@ public:
 		cFecha fechaInicioReserva = cFecha(),
 		cFecha fechaFinReserva = cFecha(),
 		float montoTotal = 0,
-		cListaElementosSeguridad* listaElementosSeguridad = NULL);
+		cListaElementosSeguridad* listaElementosSeguridad = NULL,
+		float precioVehiculo = );
 	~cAlquiler();
 	string getclave()const;
 	string toString(string separador= "\n");
 	void agregarElementoSeguridad(int elemento, int cantidad);
-	float calcularMontoTotal();
+	float actualizarMontoTotal();
+	cCliente* getCliente();
 };
 ostream& operator<<(ostream& os, cAlquiler* alquiler);
 

@@ -8,7 +8,7 @@ class cCamioneta :
 public:
     cCamioneta(unsigned int numeroPatente = 0, unsigned int color = 0, unsigned int numeroChasis = 0,
         unsigned int numeroPoliza = 0, cFecha* ultimoMantenimiento = new cFecha(), float precioAlquilerXDia = ALQUILER_CAMIONETAS,
-        const unsigned int capacidadPasajeros = 0, int cantElementosSeguridad = ESmaxCAMIONETA);
+        const unsigned int capacidadPasajeros = 0, int cantElementosSeguridad = ESmaxCAMIONETA, float precioVehiculo = PrecioCompraCAMIONETA);
     ~cCamioneta();
     string getTipoVehiculo();
     static string getPasosMantenimiento();

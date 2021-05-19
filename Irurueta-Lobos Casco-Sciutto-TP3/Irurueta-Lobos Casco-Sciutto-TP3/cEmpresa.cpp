@@ -1,7 +1,8 @@
 #include "cEmpresa.h"
 
-cEmpresa::cEmpresa(cListaT<cVehiculo>* listaVehiculos, cListaAlquileres* listaAlquileres, cListaT<cCliente>* listaClientes)
+cEmpresa::cEmpresa(float ganancia, cListaT<cVehiculo>* listaVehiculos, cListaAlquileres* listaAlquileres, cListaT<cCliente>* listaClientes)
 {
+	this->ganancia = ganancia;
 	if (listaVehiculos == NULL)
 		listaVehiculos = new cListaT<cVehiculo>();
 	this->listaVehiculos = listaVehiculos;
@@ -49,9 +50,20 @@ void cEmpresa::mantenimiento(cVehiculo* vehiculo)
 void cEmpresa::adquirirVehiculo(cVehiculo* vehiculo)
 {
 	listaVehiculos->AgregarItem(vehiculo);
+	ganancia -= vehiculo->getPrecioCompraVehiculo();
 }
 
 cVehiculo* cEmpresa::sacarCirculacionVehiculo(cVehiculo* vehiculo)
 {
 	 return(listaVehiculos->Quitar(vehiculo));
+}
+
+void cEmpresa::nuevoAlquiler(cAlquiler* alquiler)
+{
+	cCliente* clienteBuscar = listaClientes->BuscarItem(alquiler->getCliente()->getclave());
+	if (clienteBuscar == NULL) {
+		(*listaClientes) += (alquiler->getCliente());
+	}
+	ganancia += alquiler->actualizarMontoTotal();
+	listaAlquileres->AgregarItem(alquiler);
 }

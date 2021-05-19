@@ -12,13 +12,15 @@ class cEmpresa
 	cListaT<cVehiculo>* listaVehiculos;
 	cListaAlquileres* listaAlquileres;
 	cListaT<cCliente>* listaClientes;
+	float ganancia;
 
 public:
-	cEmpresa(cListaT<cVehiculo>* listaVehiculos = NULL, cListaAlquileres* listaAlquileres = NULL, cListaT<cCliente>* listaClientes = NULL);
+	cEmpresa(float ganancia = 0, cListaT<cVehiculo>* listaVehiculos = NULL, cListaAlquileres* listaAlquileres = NULL, cListaT<cCliente>* listaClientes = NULL);
 	~cEmpresa();
 	void pasosMantenimiento(cVehiculo* vehiculo);
 	void mantenimiento(cVehiculo* vehiculo);
 	void adquirirVehiculo(cVehiculo* vehiculo);
 	cVehiculo* sacarCirculacionVehiculo(cVehiculo* vehiculo);
+	void nuevoAlquiler(cAlquiler* alquiler);
 };
 

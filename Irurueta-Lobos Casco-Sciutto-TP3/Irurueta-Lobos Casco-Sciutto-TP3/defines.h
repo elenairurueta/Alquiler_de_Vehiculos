@@ -19,6 +19,11 @@
 #define PrecioPORTAEQUIPAJE 100
 #define PrecioASIENTO 70
 
+#define PrecioCompraAUTOMOVIL 10000
+#define PrecioCompraMOTOCICLETA 7000
+#define PrecioCompraTRAFIC 12000
+#define PrecioCompraCAMIONETA 11000
+
 const string pasosMantenimientoAUTOMOVIL = "1. Luces\n2. Chasis\n3. Seguridad y Emergencia\n4. Sistema de dirección y Tren delantero\n5. Sistema de escape\n6. Sistema de Frenos\n7. Neumaticos\n8. Sistema de suspension";
 const string pasosMantenimientoMOTOCICLETA = "1. Espejos\n2. Luces\n3. Bocina\n4. Placa de dominio\n5. Nivel sonoro(escape)\n6. Emisión de gases(escape)\n7. Cubrecadena\n8. Chasis\n9. Frenos\n10. Neumáticos";
 const string pasosMantenimientoCAMIONETA = "1. Luces\n2. Chasis\n3. Seguridad y Emergencia\n4. Sistema de dirección y Tren delantero\n5. Sistema de escape\n6. Sistema de Frenos\n7. Neumaticos\n8. Sistema de suspension";
