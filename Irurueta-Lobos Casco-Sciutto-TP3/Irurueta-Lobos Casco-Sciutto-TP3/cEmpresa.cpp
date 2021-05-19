@@ -23,22 +23,26 @@ cEmpresa::~cEmpresa()
 		delete listaClientes;
 }
 
-void cEmpresa::pasosMantenimiento(string tipovehiculo)
+void cEmpresa::pasosMantenimiento(cVehiculo* vehiculo)
 {
-	if (tipovehiculo.compare("automovil")==0)
+	cAutomovil* ptrAutomovil = dynamic_cast<cAutomovil*>(vehiculo);
+	if (ptrAutomovil != NULL)
 		cout << "\n\nPasos Mantenimiento AUTOMOVIL" << cAutomovil::getPasosMantenimiento() << endl;	
-	else if (tipovehiculo.compare("camioneta") == 0)
+	cCamioneta* ptrCamioneta = dynamic_cast<cCamioneta*>(vehiculo);
+	if (ptrCamioneta != NULL)
 		cout << "\n\nPasos Mantenimiento CAMIONETA" << cCamioneta::getPasosMantenimiento() << endl;
-	else if (tipovehiculo.compare("motocicleta") == 0)
+	cMotocicleta* ptrMotocicleta = dynamic_cast<cMotocicleta*>(vehiculo);
+	if (ptrMotocicleta != NULL)
 		cout << "\n\nPasos Mantenimiento MOTOCICLETA" << cMotocicleta::getPasosMantenimiento() << endl;
-	else if (tipovehiculo.compare("trafic") == 0)
+	cTrafic* ptrTrafic = dynamic_cast<cTrafic*>(vehiculo);
+	if (ptrTrafic != NULL)
 		cout << "\n\nPasos Mantenimiento TRAFIC" << cTrafic::getPasosMantenimiento() << endl;
 }
 
 void cEmpresa::mantenimiento(cVehiculo* vehiculo)
 {
 	cout << "\n\nVehiculo en mantenimiento: " << vehiculo << endl;
-	pasosMantenimiento(vehiculo->getTipoVehiculo());
+	pasosMantenimiento(vehiculo);
 	vehiculo->actualizarUltimoMantenimiento();
 }
 

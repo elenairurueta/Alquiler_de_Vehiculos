@@ -16,7 +16,7 @@ class cEmpresa
 public:
 	cEmpresa(cListaT<cVehiculo>* listaVehiculos = NULL, cListaAlquileres* listaAlquileres = NULL, cListaT<cCliente>* listaClientes = NULL);
 	~cEmpresa();
-	void pasosMantenimiento(string tipovehiculo);
+	void pasosMantenimiento(cVehiculo* vehiculo);
 	void mantenimiento(cVehiculo* vehiculo);
 	void adquirirVehiculo(cVehiculo* vehiculo);
 	cVehiculo* sacarCirculacionVehiculo(cVehiculo* vehiculo);
