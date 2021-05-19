@@ -17,3 +17,7 @@ string cTrafic::getTipoVehiculo()
 {
 	return "trafic";
 }
+string cTrafic::getPasosMantenimiento()
+{
+	return pasosMantenimiento;
+}

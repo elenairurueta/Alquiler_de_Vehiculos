@@ -17,3 +17,7 @@ string cCamioneta::getTipoVehiculo()
 	return "camioneta";
 }
 
+string cCamioneta::getPasosMantenimiento()
+{
+	return pasosMantenimiento;
+}

@@ -16,3 +16,8 @@ string cMotocicleta::getTipoVehiculo()
 {
 	return "motocicleta";
 }
+
+string cMotocicleta::getPasosMantenimiento()
+{
+	return pasosMantenimiento;
+}

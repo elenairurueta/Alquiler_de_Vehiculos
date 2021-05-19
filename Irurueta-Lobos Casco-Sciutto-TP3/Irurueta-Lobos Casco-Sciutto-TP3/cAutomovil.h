@@ -10,8 +10,8 @@ public:
         unsigned int numeroPoliza = 0, cFecha* ultimoMantenimiento = new cFecha(), float precioAlquilerXDia = ALQUILER_AUTOMOVILES,
         const unsigned int capacidadPasajeros = 0, int cantElementosSeguridad = ESmaxAUTOMOVIL);
     ~cAutomovil();
-
     string getTipoVehiculo();
-    
+    static string getPasosMantenimiento();
+
 };
 

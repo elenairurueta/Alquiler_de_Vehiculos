@@ -11,7 +11,7 @@ public:
         const unsigned int capacidadPasajeros = 0, int cantElementosSeguridad = ESmaxMOTOCICLETA);
     ~cMotocicleta();
     string getTipoVehiculo();
-
+    static string getPasosMantenimiento();
 
 };
 

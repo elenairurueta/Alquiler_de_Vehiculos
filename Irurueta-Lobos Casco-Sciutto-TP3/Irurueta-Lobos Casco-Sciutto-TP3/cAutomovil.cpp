@@ -16,4 +16,7 @@ string cAutomovil::getTipoVehiculo()
 {
 	return "automovil";
 }
-
+string cAutomovil::getPasosMantenimiento()
+{
+	return pasosMantenimiento;
+}

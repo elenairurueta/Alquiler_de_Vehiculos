@@ -11,6 +11,7 @@ public:
         const unsigned int capacidadPasajeros = 0, int cantElementosSeguridad = ESmaxTRAFIC);
     ~cTrafic();
     string getTipoVehiculo();
+    static string getPasosMantenimiento();
 
 };
 
