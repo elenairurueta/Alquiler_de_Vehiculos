@@ -9,6 +9,11 @@
 #define ESmaxTRAFIC 2
 #define ESmaxCAMIONETA 2
 
+#define pasajerosMaxAUTOMOVIL 5
+#define pasajerosMaxMOTOCICLETA 2
+#define pasajerosMaxCAMIONETA 7
+#define pasajerosMaxTRAFIC 7
+
 #define CASCOSmax 2
 #define SILLAS_NINOSmax 3
 #define ASIENTOSmax 3

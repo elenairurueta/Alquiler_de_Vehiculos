@@ -53,9 +53,12 @@ void cEmpresa::adquirirVehiculo(cVehiculo* vehiculo)
 	ganancia -= vehiculo->getPrecioCompraVehiculo();
 }
 
-cVehiculo* cEmpresa::sacarCirculacionVehiculo(cVehiculo* vehiculo)
+cVehiculo* cEmpresa::sacarCirculacionVehiculo(string clave)
 {
-	 return(listaVehiculos->Quitar(vehiculo));
+	cVehiculo* vehiculo = listaVehiculos->BuscarItem(clave);
+	if (vehiculo == NULL)
+		return NULL;
+	return(listaVehiculos->Quitar(vehiculo));
 }
 
 void cEmpresa::nuevoAlquiler(cAlquiler* alquiler)

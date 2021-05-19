@@ -20,7 +20,7 @@ public:
 	void pasosMantenimiento(cVehiculo* vehiculo);
 	void mantenimiento(cVehiculo* vehiculo);
 	void adquirirVehiculo(cVehiculo* vehiculo);
-	cVehiculo* sacarCirculacionVehiculo(cVehiculo* vehiculo);
+	cVehiculo* sacarCirculacionVehiculo(string clave);
 	void nuevoAlquiler(cAlquiler* alquiler);
 };
 

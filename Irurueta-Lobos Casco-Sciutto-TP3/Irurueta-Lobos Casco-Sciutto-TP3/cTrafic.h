@@ -8,7 +8,7 @@ class cTrafic :
 public:
     cTrafic(string numeroPatente = "", unsigned int color = 0, string numeroChasis = "",
         string numeroPoliza = "", cFecha* ultimoMantenimiento = new cFecha(), float precioAlquilerXDia = ALQUILER_TRAFICS,
-        const unsigned int capacidadPasajeros = 0, int cantElementosSeguridad = ESmaxTRAFIC, float precioVehiculo = PrecioCompraTRAFIC);
+        const unsigned int capacidadPasajeros = pasajerosMaxTRAFIC, int cantElementosSeguridad = ESmaxTRAFIC, float precioVehiculo = PrecioCompraTRAFIC);
     ~cTrafic();
     string getTipoVehiculo();
     static string getPasosMantenimiento();
