@@ -41,11 +41,23 @@ void nuevosAlquileres(int cantidad, cEmpresa* miEmpresa) {
 		getFechasRandomNuevoAlquiler(fechaInicio, fechaFin);
 		
 		miAlquiler = new cAlquiler(miCliente, miVehiculo, fechaInicio, fechaFin);
-		miEmpresa->nuevoAlquiler(miAlquiler);
+		try {
+			miEmpresa->nuevoAlquiler(miAlquiler);
+		}
+		catch (exception* ex) {
+			cout << ex->what() << endl;
+		}
 		agregarElementosSeguridad(miAlquiler, miVehiculo);
 		cantClientesAgregados++;
 	}
 
+}
+void getFechasRandomNuevoAlquiler(cFecha& fechaInicio, cFecha& fechaFin) {
+	fechaInicio.actualizarFecha(); fechaFin.actualizarFecha();
+	short randomDiasInicio = rand() % 16 + 1; short randomMesesInicio = rand() % 2;
+	short randomDiasDiferencia = rand() % 20 + 1; short randomMesesDiferencia = rand() % 2;
+	fechaInicio.incrementarFecha(randomDiasInicio, randomMesesInicio);
+	fechaFin.incrementarFecha(randomDiasInicio + randomDiasDiferencia, randomMesesInicio + randomMesesDiferencia);
 }
 void agregarElementosSeguridad(cAlquiler* miAlquiler, cVehiculo* miVehiculo) {
 	for (int i = 0; i < miVehiculo->getCantidadElementosSeguridad(); i++) {
@@ -53,12 +65,4 @@ void agregarElementosSeguridad(cAlquiler* miAlquiler, cVehiculo* miVehiculo) {
 		int cantidadESagregar = rand() % 2; //si es más o menos de lo permitido, se arregla en agregarElementoSeguridad()
 		miAlquiler->agregarElementoSeguridad(elementoSeguridad, cantidadESagregar);
 	}
-}
-
-void getFechasRandomNuevoAlquiler(cFecha &fechaInicio, cFecha &fechaFin) {
-	fechaInicio.actualizarFecha(); fechaFin.actualizarFecha();
-	short randomDiasInicio = rand() % 16 + 1; short randomMesesInicio = rand() % 2;
-	short randomDiasDiferencia = rand() % 20 + 1; short randomMesesDiferencia = rand() % 2;
-	fechaInicio.incrementarFecha(randomDiasInicio, randomMesesInicio);
-	fechaFin.incrementarFecha(randomDiasInicio + randomDiasDiferencia, randomMesesInicio + randomMesesDiferencia);
 }

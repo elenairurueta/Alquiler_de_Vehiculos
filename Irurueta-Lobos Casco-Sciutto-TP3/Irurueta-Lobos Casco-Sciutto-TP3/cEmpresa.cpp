@@ -71,7 +71,7 @@ void cEmpresa::nuevoAlquiler(cAlquiler* alquiler)
 	}
 	ganancia += alquiler->actualizarMontoTotal();
 	if (!listaAlquileres->AgregarItem(alquiler))
-		throw new exception(""); //TODO
+		throw new exception("El alquiler que se está intentado agregar ya se encuentra en la lista");
 }
 
 cVehiculo* cEmpresa::getVehiculoCategoria(string categoria)
