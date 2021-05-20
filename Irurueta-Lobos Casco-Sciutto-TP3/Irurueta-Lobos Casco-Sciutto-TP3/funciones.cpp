@@ -3,6 +3,7 @@
 int cantVehiculosAgregados = 0;
 int cantClientesAgregados = 0;
 
+
 void agregarVehiculos(int cantidad, string tipo, cEmpresa* miEmpresa)
 {
 	cVehiculo* miVehiculo = NULL;
@@ -37,23 +38,26 @@ void nuevosAlquileres(int cantidad, cEmpresa* miEmpresa) {
 		miCliente = new cCliente(NOMBRES[cantClientesAgregados], DNIS[cantClientesAgregados], TELEFONOS[cantClientesAgregados]);
 		
 		miVehiculo = miEmpresa->getVehiculoCategoria(CATEGORIAS[rand() % cantCATEGORIAS]);
-		
+		if (miVehiculo == NULL) {
+			cout << "No hay vehiculos disponibles de la categoria solicitada" << endl;
+			continue;
+		}
 		getFechasRandomNuevoAlquiler(fechaInicio, fechaFin);
-		
 		miAlquiler = new cAlquiler(miCliente, miVehiculo, fechaInicio, fechaFin);
+		agregarElementosSeguridad(miAlquiler, miVehiculo);
 		try {
 			miEmpresa->nuevoAlquiler(miAlquiler);
 		}
 		catch (exception* ex) {
 			cout << ex->what() << endl;
 		}
-		agregarElementosSeguridad(miAlquiler, miVehiculo);
 		cantClientesAgregados++;
 	}
 
 }
 void getFechasRandomNuevoAlquiler(cFecha& fechaInicio, cFecha& fechaFin) {
 	fechaInicio.actualizarFecha(); fechaFin.actualizarFecha();
+	srand(time(NULL));
 	short randomDiasInicio = rand() % 16 + 1; short randomMesesInicio = rand() % 2;
 	short randomDiasDiferencia = rand() % 20 + 1; short randomMesesDiferencia = rand() % 2;
 	fechaInicio.incrementarFecha(randomDiasInicio, randomMesesInicio);
@@ -61,8 +65,10 @@ void getFechasRandomNuevoAlquiler(cFecha& fechaInicio, cFecha& fechaFin) {
 }
 void agregarElementosSeguridad(cAlquiler* miAlquiler, cVehiculo* miVehiculo) {
 	for (int i = 0; i < miVehiculo->getCantidadElementosSeguridad(); i++) {
-		int elementoSeguridad = rand() % miAlquiler->getElementoSeguridad(i);
-		int cantidadESagregar = rand() % 2; //si es más o menos de lo permitido, se arregla en agregarElementoSeguridad()
+		int elementoSeguridad = miAlquiler->getElementoSeguridad(i);
+		int cantidadESagregar = rand() % 3; //si es más o menos de lo permitido, se arregla en agregarElementoSeguridad()
 		miAlquiler->agregarElementoSeguridad(elementoSeguridad, cantidadESagregar);
 	}
 }
+
+

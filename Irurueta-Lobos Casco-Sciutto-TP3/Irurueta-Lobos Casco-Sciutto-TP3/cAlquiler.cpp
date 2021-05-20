@@ -87,6 +87,8 @@ void cAlquiler::agregarElementoSeguridad(int elemento, int cantidad)
 	}
 	cElementosSeguridad* ptrElemento = listaElementosSeguridad->BuscarItem(elementoAgregar);
 	ptrElemento->setCantidad(cantidad);
+	if (cantidad == 0)
+		return;
 	ptrElemento->setAgregado(true);
 }
 float cAlquiler::actualizarMontoTotal()

@@ -25,7 +25,7 @@ float cVehiculo::calcularTarifa(int cantDias)
 
 string cVehiculo::getclave()const
 {
-	return to_string(numeroPatente);
+	return numeroPatente;
 }
 
 void cVehiculo::setPrecioBase(float precio)
@@ -34,7 +34,7 @@ void cVehiculo::setPrecioBase(float precio)
 }
 string cVehiculo::toString(string separador)const
 {
-	string cadena = separador + "Patente: " + to_string(numeroPatente) + separador + "Color: ";
+	string cadena = separador + "Patente: " + numeroPatente + separador + "Color: ";
 	switch (color) {
 	case AMARILLO: cadena += "Amarillo"; break;
 	case LILA: cadena += "Lila"; break;
@@ -42,7 +42,7 @@ string cVehiculo::toString(string separador)const
 	case FUCSIA: cadena += "Fucsia"; break;
 	case VERDE: cadena += "Verde"; break;
 	}
-	cadena += separador + "Chasis: " + to_string(numeroChasis) + separador + "Poliza: " + to_string(numeroPoliza) + separador + "Ultimo Mantenimiento: " + ultimoMantenimiento->toString() + separador + "Precio Alquiler: " + to_string(precioAlquilerXDia) + "\n\tPrecio Base: " + to_string(precioBase) + "\n\tCapacidad Pasajeros: " + to_string(capacidadPasajeros);
+	cadena += separador + "Chasis: " + numeroChasis + separador + "Poliza: " + numeroPoliza + separador + "Ultimo Mantenimiento: " + ultimoMantenimiento->toString() + separador + "Precio Alquiler: " + to_string(precioAlquilerXDia) + "\n\tPrecio Base: " + to_string(precioBase) + "\n\tCapacidad Pasajeros: " + to_string(capacidadPasajeros);
 	return cadena;
 }
 

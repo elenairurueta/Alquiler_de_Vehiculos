@@ -133,10 +133,10 @@ unsigned int cFecha::calcularDiasDiferencia(cFecha* fechaComparar)
 	fechaComparacion.tm_min = fechaComparar->minutos;
 	fechaComparacion.tm_sec = fechaComparar->segundos;
 
-	float dias = float(difftime(mktime(&fechaActual), mktime(&fechaComparacion)) / (60 * 60 * 24));
-	if (!dias % 1) //TODO: verificar
-		dias++;
-
+	double dias = difftime(mktime(&fechaComparacion), mktime(&fechaActual)) / (60 * 60 * 24);
+	//TODO: ARREGLAR diferencia de dias
+	//TODO: verificar redondeo para abajo
+	dias++;
 	return unsigned int(dias);
 }
 

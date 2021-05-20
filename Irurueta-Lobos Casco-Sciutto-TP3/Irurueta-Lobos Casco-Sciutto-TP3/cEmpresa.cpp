@@ -88,21 +88,21 @@ cVehiculo* cEmpresa::getVehiculoCategoria(string categoria)
 		else if (categoria == "camioneta") {
 			cCamioneta* ptrCamioneta = dynamic_cast<cCamioneta*>((*listaVehiculos)[i]);
 			if (ptrCamioneta != NULL) {
-				if (listaAlquileres->chequearVehiculoEnAlquiler((*listaVehiculos)[i]))
+				if (!listaAlquileres->chequearVehiculoEnAlquiler((*listaVehiculos)[i]))
 					return (*listaVehiculos)[i];
 			}
 		}
 		else if (categoria == "motocicleta") {
 			cMotocicleta* ptrMotocicleta = dynamic_cast<cMotocicleta*>((*listaVehiculos)[i]);
 			if (ptrMotocicleta != NULL) {
-				if (listaAlquileres->chequearVehiculoEnAlquiler((*listaVehiculos)[i]))
+				if (!listaAlquileres->chequearVehiculoEnAlquiler((*listaVehiculos)[i]))
 					return (*listaVehiculos)[i];
 			}
 		}
 		else if (categoria == "trafic") {
 			cTrafic* ptrTrafic = dynamic_cast<cTrafic*>((*listaVehiculos)[i]);
 			if (ptrTrafic != NULL) {
-				if (listaAlquileres->chequearVehiculoEnAlquiler((*listaVehiculos)[i]))
+				if (!listaAlquileres->chequearVehiculoEnAlquiler((*listaVehiculos)[i]))
 					return (*listaVehiculos)[i];
 			}
 		}
