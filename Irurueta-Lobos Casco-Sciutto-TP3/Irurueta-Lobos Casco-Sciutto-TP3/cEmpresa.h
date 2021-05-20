@@ -22,5 +22,6 @@ public:
 	void adquirirVehiculo(cVehiculo* vehiculo);
 	cVehiculo* sacarCirculacionVehiculo(string clave);
 	void nuevoAlquiler(cAlquiler* alquiler);
+	cVehiculo* getVehiculoCategoria(string categoria);
 };
 

@@ -102,6 +102,10 @@ cCliente* cAlquiler::getCliente()
 {
 	return cliente;
 }
+int cAlquiler::getElementoSeguridad(int pos)
+{
+	return (listaElementosSeguridad->getItem(pos))->getTipo();
+}
 ostream& operator<<(ostream& os, cAlquiler* alquiler)
 {
 	if (alquiler == NULL)

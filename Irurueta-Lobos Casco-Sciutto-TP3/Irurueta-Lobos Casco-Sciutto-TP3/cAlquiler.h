@@ -29,6 +29,7 @@ public:
 	void agregarElementoSeguridad(int elemento, int cantidad);
 	float actualizarMontoTotal();
 	cCliente* getCliente();
+	int getElementoSeguridad(int pos);
 };
 ostream& operator<<(ostream& os, cAlquiler* alquiler);
 

@@ -58,3 +58,12 @@ float cListaAlquileres::calcularGananciaTotal()
 		acumGanancias += vector[i]->montoTotal;
 	return acumGanancias;
 }
+
+bool cListaAlquileres::chequearVehiculoEnAlquiler(cVehiculo* vehiculoBuscar)
+{
+	for (int i = 0; i < CA; i++) {
+		if ((vector[i]->vehiculo->getclave()).compare(vehiculoBuscar->getclave()) == 0)
+			return true;
+	}
+	return false;
+}

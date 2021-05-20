@@ -1,4 +1,6 @@
 #pragma once
+#define cantCATEGORIAS 4
+
 #define ALQUILER_AUTOMOVILES 1000
 #define ALQUILER_MOTOCICLETAS 700
 #define ALQUILER_CAMIONETAS 1500
@@ -34,3 +36,9 @@ const string pasosMantenimientoMOTOCICLETA = "1. Espejos\n2. Luces\n3. Bocina\n4
 const string pasosMantenimientoCAMIONETA = "1. Luces\n2. Chasis\n3. Seguridad y Emergencia\n4. Sistema de dirección y Tren delantero\n5. Sistema de escape\n6. Sistema de Frenos\n7. Neumaticos\n8. Sistema de suspension";
 const string pasosMantenimientoTRAFIC = "1. Luces\n2. Chasis\n3. Seguridad y Emergencia\n4. Sistema de dirección y Tren delantero\n5. Sistema de escape\n6. Sistema de Frenos\n7. Neumaticos\n8. Sistema de suspension";
 
+const string CATEGORIAS[cantCATEGORIAS] = {
+	"automovil",
+	"motocicleta",
+	"trafic",
+	"camioneta"
+};

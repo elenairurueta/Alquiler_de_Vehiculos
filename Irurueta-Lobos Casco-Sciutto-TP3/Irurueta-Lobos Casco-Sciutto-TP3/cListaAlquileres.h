@@ -7,12 +7,12 @@
 class cListaAlquileres :
     public cListaT<cAlquiler>
 {
-
 public:
     cListaAlquileres(unsigned int TAM = TAM_A);
     ~cListaAlquileres();
-    void listarPorTipoVehiculo();
+    void listarPorTipoVehiculo(); 
     float calcularGananciaTotal();
+    bool chequearVehiculoEnAlquiler(cVehiculo* vehiculoBuscar);
 
 };
 

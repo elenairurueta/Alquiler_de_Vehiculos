@@ -58,6 +58,8 @@ cVehiculo* cEmpresa::sacarCirculacionVehiculo(string clave)
 	cVehiculo* vehiculo = listaVehiculos->BuscarItem(clave);
 	if (vehiculo == NULL)
 		return NULL;
+	if (listaAlquileres->chequearVehiculoEnAlquiler(vehiculo))
+		return NULL;
 	return(listaVehiculos->Quitar(vehiculo));
 }
 
@@ -68,5 +70,42 @@ void cEmpresa::nuevoAlquiler(cAlquiler* alquiler)
 		(*listaClientes) += (alquiler->getCliente());
 	}
 	ganancia += alquiler->actualizarMontoTotal();
-	listaAlquileres->AgregarItem(alquiler);
+	if (!listaAlquileres->AgregarItem(alquiler))
+		throw new exception(""); //TODO
+}
+
+cVehiculo* cEmpresa::getVehiculoCategoria(string categoria)
+{
+	for (int i = 0; i < listaVehiculos->getCA(); i++) {
+
+		if (categoria == "automovil") {
+			cAutomovil* ptrAutomovil = dynamic_cast<cAutomovil*>((*listaVehiculos)[i]);
+			if (ptrAutomovil != NULL) {
+				if(!listaAlquileres->chequearVehiculoEnAlquiler((*listaVehiculos)[i]))
+					return (*listaVehiculos)[i];
+			}
+		}
+		else if (categoria == "camioneta") {
+			cCamioneta* ptrCamioneta = dynamic_cast<cCamioneta*>((*listaVehiculos)[i]);
+			if (ptrCamioneta != NULL) {
+				if (listaAlquileres->chequearVehiculoEnAlquiler((*listaVehiculos)[i]))
+					return (*listaVehiculos)[i];
+			}
+		}
+		else if (categoria == "motocicleta") {
+			cMotocicleta* ptrMotocicleta = dynamic_cast<cMotocicleta*>((*listaVehiculos)[i]);
+			if (ptrMotocicleta != NULL) {
+				if (listaAlquileres->chequearVehiculoEnAlquiler((*listaVehiculos)[i]))
+					return (*listaVehiculos)[i];
+			}
+		}
+		else if (categoria == "trafic") {
+			cTrafic* ptrTrafic = dynamic_cast<cTrafic*>((*listaVehiculos)[i]);
+			if (ptrTrafic != NULL) {
+				if (listaAlquileres->chequearVehiculoEnAlquiler((*listaVehiculos)[i]))
+					return (*listaVehiculos)[i];
+			}
+		}
+	}
+	return NULL;
 }

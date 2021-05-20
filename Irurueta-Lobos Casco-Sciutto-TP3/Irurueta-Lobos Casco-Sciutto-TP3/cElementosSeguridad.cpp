@@ -45,3 +45,8 @@ float cElementosSeguridad::getPrecioTotal()
 {
 	return (precio*cantidad);
 }
+
+int cElementosSeguridad::getTipo()
+{
+	return tipo;
+}

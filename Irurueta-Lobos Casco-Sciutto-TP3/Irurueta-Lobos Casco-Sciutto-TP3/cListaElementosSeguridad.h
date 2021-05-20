@@ -5,6 +5,7 @@
 class cListaElementosSeguridad :
     public cListaT<cElementosSeguridad>
 {
+    friend class cAlquiler;
 public:
     cListaElementosSeguridad(string tipoVehiculo, int cantidadElementos);
     ~cListaElementosSeguridad();

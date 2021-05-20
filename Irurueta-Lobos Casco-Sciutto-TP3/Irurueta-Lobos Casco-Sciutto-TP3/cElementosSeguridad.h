@@ -4,6 +4,7 @@ using namespace std;
 typedef enum {CASCO, SILLA_NINOS, PORTAEQUIPAJE, ASIENTOS_REVERSIBLES};
 class cElementosSeguridad
 {
+	friend class cListaElementosSeguridad;
 	int tipo; //enum
 	bool agregado;
 	int cantidad;
@@ -17,4 +18,5 @@ public:
 	void setAgregado(bool agregado);
 	string toString(string separador = "\n");
 	float getPrecioTotal();
+	int getTipo();
 };

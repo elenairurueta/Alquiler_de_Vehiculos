@@ -140,6 +140,17 @@ unsigned int cFecha::calcularDiasDiferencia(cFecha* fechaComparar)
 	return unsigned int(dias);
 }
 
+void cFecha::incrementarFecha(short dia, short mes, short anio, short hora, short minutos, short segundos)
+{
+	this->dia += dia;
+	this->mes += mes;
+	this->anio += anio;
+	this->hora += hora;	
+	this->minutos += minutos;
+	this->segundos += segundos;
+	verificarFecha();
+}
+
 #pragma region toString e Imprimir
 string cFecha::toString(string separador)
 {
