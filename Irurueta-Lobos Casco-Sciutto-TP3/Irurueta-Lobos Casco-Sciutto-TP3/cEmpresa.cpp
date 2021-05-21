@@ -120,3 +120,8 @@ void cEmpresa::terminarAlquileres(cFecha* fechaActual)
 {
 	listaAlquileres->quitarPorFecha(fechaActual);
 }
+
+cListaAlquileres* cEmpresa::getListaAlquileres()
+{
+	return listaAlquileres;
+}

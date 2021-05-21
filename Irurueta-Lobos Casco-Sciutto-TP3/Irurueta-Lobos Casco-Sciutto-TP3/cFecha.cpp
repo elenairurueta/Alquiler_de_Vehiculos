@@ -71,41 +71,41 @@ int cFecha::compararFechas(cFecha* fechaComparar)
 {
 	if (fechaComparar == NULL)
 		return -2;
-	if (anio > fechaComparar->anio)
+	if ((this->anio) > fechaComparar->anio)
 		return -1;
-	else if (anio < fechaComparar->anio)
+	else if ((this->anio) < fechaComparar->anio)
 		return 1;
-	else if (anio == fechaComparar->anio)
+	else if ((this->anio) == fechaComparar->anio)
 	{
-		if (mes > fechaComparar->mes)
+		if ((this->mes) > fechaComparar->mes)
 			return -1;
-		else if (mes < fechaComparar->mes)
+		else if ((this->mes) < fechaComparar->mes)
 			return 1;
-		else if (mes == fechaComparar->mes)
+		else if ((this->mes) == fechaComparar->mes)
 		{
-			if (dia > fechaComparar->dia)
+			if ((this->dia) > fechaComparar->dia)
 				return -1;
-			else if (dia < fechaComparar->dia)
+			else if ((this->dia) < fechaComparar->dia)
 				return 1;
-			else if (dia == fechaComparar->dia)
+			else if ((this->dia) == fechaComparar->dia)
 			{
-				if (hora > fechaComparar->hora)
+				if ((this->hora) > fechaComparar->hora)
 					return -1;
-				else if (hora < fechaComparar->hora)
+				else if ((this->hora) < fechaComparar->hora)
 					return 1;
-				else if (hora == fechaComparar->hora)
+				else if ((this->hora) == fechaComparar->hora)
 				{
-					if (minutos > fechaComparar->minutos)
+					if ((this->minutos) > fechaComparar->minutos)
 						return -1;
-					else if (minutos < fechaComparar->minutos)
+					else if ((this->minutos) < fechaComparar->minutos)
 						return 1;
-					else if (minutos == fechaComparar->minutos)
+					else if ((this->minutos) == fechaComparar->minutos)
 					{
-						if (segundos > fechaComparar->segundos)
+						if ((this->segundos) > fechaComparar->segundos)
 							return -1;
-						else if (segundos < fechaComparar->segundos)
+						else if ((this->segundos) < fechaComparar->segundos)
 							return 1;
-						else if (segundos == fechaComparar->segundos)
+						else if ((this->segundos) == fechaComparar->segundos)
 							return 0;
 					}
 				}
@@ -119,23 +119,23 @@ int cFecha::compararDias(cFecha* fechaComparar)
 {
 	if (fechaComparar == NULL)
 		return -2;
-	if (anio > fechaComparar->anio)
+	if ((this->anio) > fechaComparar->anio)
 		return -1;
-	else if (anio < fechaComparar->anio)
+	else if ((this->anio) < fechaComparar->anio)
 		return 1;
-	else if (anio == fechaComparar->anio)
+	else if ((this->anio) == fechaComparar->anio)
 	{
-		if (mes > fechaComparar->mes)
+		if ((this->mes) > fechaComparar->mes)
 			return -1;
-		else if (mes < fechaComparar->mes)
+		else if ((this->mes) < fechaComparar->mes)
 			return 1;
-		else if (mes == fechaComparar->mes)
+		else if ((this->mes) == fechaComparar->mes)
 		{
-			if (dia > fechaComparar->dia)
+			if ((this->dia) > fechaComparar->dia)
 				return -1;
-			else if (dia < fechaComparar->dia)
+			else if ((this->dia) < fechaComparar->dia)
 				return 1;
-			else if (dia == fechaComparar->dia)
+			else if ((this->dia) == fechaComparar->dia)
 			{
 				return 0;				
 			}
@@ -178,14 +178,68 @@ unsigned int cFecha::calcularDiasDiferencia(cFecha* fechaComparar)
 	return unsigned int(dias);
 }
 
-void cFecha::incrementarFecha(short dia, short mes, short anio, short hora, short minutos, short segundos)
+void cFecha::incrementarFecha(short dia, short mes, short anio)
 {
-	this->dia += dia;
-	this->mes += mes;
+	switch (this->mes)
+	{
+	case 1:
+	case 3:
+	case 5:
+	case 7:
+	case 8:
+	case 10:
+	case 12:
+		if (dia > 31) //verificacion de lo pasado por parámetro (no más de un mes en dias)
+			dia = 31;
+		if ((this->dia + dia) > 31)
+		{
+			this->dia += dia - 31;
+			if (this->mes == 12) {
+				this->anio++;
+				this->mes = 1;
+			}
+			else
+				this->mes++;
+		}
+		else
+			this->dia += dia;
+		break;
+	case 2:
+		if (dia > 28) //verificacion de lo pasado por parámetro (no más de un mes en dias)
+			dia = 28;
+		if ((this->dia + dia) > 28)
+		{
+			this->dia += dia - 28;
+			this->mes++;
+		}
+		else
+			this->dia += dia;
+		break;
+	case 4:
+	case 6:
+	case 9:
+	case 11:
+		if (dia > 30) //verificacion de lo pasado por parámetro (no más de un mes en dias)
+			dia = 30;
+		if ((this->dia + dia) > 30)
+		{
+			this->dia += dia - 28;
+			this->mes++;
+		}
+		else
+			this->dia += dia;
+		break;
+	default:
+		break;
+	}
+	if ((this->mes + mes) > 12)
+	{
+		this->anio++;
+		this->mes += mes - 12;
+	}
+	else
+		this->mes += mes;
 	this->anio += anio;
-	this->hora += hora;	
-	this->minutos += minutos;
-	this->segundos += segundos;
 	verificarFecha();
 }
 

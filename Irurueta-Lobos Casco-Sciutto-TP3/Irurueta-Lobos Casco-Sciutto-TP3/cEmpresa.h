@@ -25,5 +25,6 @@ public:
 	cVehiculo* getVehiculoCategoria(string categoria);
 	cVehiculo* getVehiculo(string clave);
 	void terminarAlquileres(cFecha* fechaActual);
+	cListaAlquileres* getListaAlquileres();
 };
 

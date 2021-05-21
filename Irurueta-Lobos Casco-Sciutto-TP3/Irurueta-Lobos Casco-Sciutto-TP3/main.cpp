@@ -16,12 +16,13 @@ int main() {
 	agregarVehiculos(20, "motocicleta", miEmpresa);
 
 	nuevosAlquileres(30, miEmpresa);
-	for(int i = 0; i < 15; i++)
+	for(int i = 0; i < 25; i++)
 		diaSiguiente(miEmpresa);
 
 	retirarVehiculoRandom(miEmpresa);
 	mantenimientoVehiculoRandom(miEmpresa);
 
+	miEmpresa->getListaAlquileres()->listarPorTipoVehiculo();
 	////UNDONE: prueba operador <<
 	//cAutomovil* automovil = new cAutomovil();
 	//cout << automovil << endl;

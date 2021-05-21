@@ -11,25 +11,36 @@ class cAlquiler
 	cCliente* cliente;
 	cVehiculo* vehiculo;
 	cListaElementosSeguridad* listaElementosSeguridad;
-	cFecha fechaInicioReserva;
-	cFecha fechaFinReserva;
+	cFecha* fechaInicioReserva;
+	cFecha* fechaFinReserva;
 	float montoTotal;
 
 public:
-	cAlquiler(
+#pragma region Constructor y Destructor
+	cAlquiler(cFecha* fechaInicioReserva = NULL,
+		cFecha* fechaFinReserva = NULL,
 		cCliente* cliente = NULL, 
 		cVehiculo* vehiculo = NULL, 
-		cFecha fechaInicioReserva = cFecha(),
-		cFecha fechaFinReserva = cFecha(),
 		float montoTotal = 0,
 		cListaElementosSeguridad* listaElementosSeguridad = NULL);
 	~cAlquiler();
-	string getclave()const;
+#pragma endregion
+
+#pragma region toString() e imprimir()
 	string toString(string separador= "\n");
+	void imprimir(string separador = "\n");
+#pragma endregion
+
+	//agregamos el elemento de seguridad pasado por parámetro (actualizando la listaElementosSeguridad)
 	void agregarElementoSeguridad(int elemento, int cantidad);
+	//calculamos el monto total del alquiler sumando el del alquiler del vehiculo según la cantidad de días y el de los elementos de seguridad
 	float actualizarMontoTotal();
+
+#pragma region Getters
+	string getclave()const;
 	cCliente* getCliente();
 	int getElementoSeguridad(int pos);
+#pragma endregion
 };
 ostream& operator<<(ostream& os, cAlquiler* alquiler);
 

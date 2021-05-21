@@ -1,33 +1,31 @@
 #include "cAlquiler.h"
-int cAlquiler::cantAlquileres = 0;
-cAlquiler::cAlquiler(cCliente* cliente, cVehiculo* vehiculo, cFecha fechaInicioReserva, 
-	cFecha fechaFinReserva, float montoTotal, cListaElementosSeguridad* listaElementosSeguridad):codigoReserva(cantAlquileres++)
+int cAlquiler::cantAlquileres = 0; //inicialización atributo static
+
+#pragma region Constructor y Destructor
+cAlquiler::cAlquiler(cFecha* fechaInicioReserva, cFecha* fechaFinReserva, cCliente* cliente, cVehiculo* vehiculo,
+	float montoTotal, cListaElementosSeguridad* listaElementosSeguridad):codigoReserva(cantAlquileres++)
 {
-	cFecha *auxiliar = new cFecha();
-	if (fechaInicioReserva.compararFechas(auxiliar) == 0)
-		fechaInicioReserva.actualizarFecha();
+	if (fechaInicioReserva == NULL)
+		fechaInicioReserva = new cFecha(); //si no tiene fecha asignada, la creamos
+	cFecha* auxiliar = new cFecha();
+	if ((fechaInicioReserva != NULL) && (fechaInicioReserva->compararFechas(auxiliar) == 0))
+		fechaInicioReserva->actualizarFecha(); //si la fecha no esta inicializada la actualizamos
 	delete auxiliar;
 	this->fechaInicioReserva = fechaInicioReserva;
-	if(cliente != NULL)
-		this->cliente = cliente;
+	this->fechaFinReserva = fechaFinReserva;
+	this->cliente = cliente;
 	this->vehiculo = vehiculo;
-	if ((listaElementosSeguridad == NULL) && (vehiculo != NULL))
+	if ((listaElementosSeguridad == NULL) && (vehiculo != NULL)) //y creamos la lista de elementos de seguridad disponibles para agregar
 		listaElementosSeguridad = new cListaElementosSeguridad(vehiculo->getTipoVehiculo(), vehiculo->getCantidadElementosSeguridad());
 	this->listaElementosSeguridad = listaElementosSeguridad;
-	this->fechaInicioReserva = fechaInicioReserva;
-	this->fechaFinReserva = fechaFinReserva;
 	this->montoTotal = montoTotal;
 }
-
 cAlquiler::~cAlquiler()
 {
 }
+#pragma endregion
 
-string cAlquiler::getclave()const
-{
-	return to_string(codigoReserva);
-}
-
+#pragma region toString() e imprimir()
 string cAlquiler::toString(string separador)
 {
 	string cadena = separador + "Codigo de Reserva: " + to_string(codigoReserva);
@@ -35,13 +33,13 @@ string cAlquiler::toString(string separador)
 		cadena += separador + "Cliente: " + cliente->toString("\n");
 	if (vehiculo != NULL)
 		cadena += separador + "Vehiculo: " + vehiculo->getTipoVehiculo() + vehiculo->toString();
-	cadena += separador + "Fecha inicio: " + fechaInicioReserva.toString() + separador + "Fecha Fin: ";
+	cadena += separador + "Fecha inicio: " + fechaInicioReserva->toString() + separador + "Fecha Fin: ";
 	
 	cFecha* auxiliar = new cFecha();
-	if (fechaFinReserva.compararFechas(auxiliar) == 0)
+	if (fechaFinReserva->compararFechas(auxiliar) == 0)
 		cadena += "No definida";
 	else
-		cadena += fechaFinReserva.toString();
+		cadena += fechaFinReserva->toString();
 	delete auxiliar;
 
 	if (listaElementosSeguridad != NULL)
@@ -49,14 +47,21 @@ string cAlquiler::toString(string separador)
 	cadena += separador + "Monto total: " + to_string(montoTotal);
 	return cadena;
 }
+void cAlquiler::imprimir(string separador)
+{
+	cout << toString(separador) << endl;
+}
+#pragma endregion
+
 void cAlquiler::agregarElementoSeguridad(int elemento, int cantidad)
 {
+	//pasamos el elemento a string para buscarlo en la lista
 	string elementoAgregar = "";
 	switch (elemento)
 	{ 
 	case CASCO:
 		elementoAgregar = "casco";
-		if (cantidad > CASCOSmax)
+		if (cantidad > CASCOSmax) //y acomodamos la cantidad de elementos deseada a lo permitido
 			cantidad = CASCOSmax;
 		if (cantidad < 0)
 			cantidad = 0;
@@ -85,21 +90,24 @@ void cAlquiler::agregarElementoSeguridad(int elemento, int cantidad)
 	default:
 		elementoAgregar = "";
 	}
-	cElementosSeguridad* ptrElemento = listaElementosSeguridad->BuscarItem(elementoAgregar);
-	ptrElemento->setCantidad(cantidad);
 	if (cantidad == 0)
 		return;
-	ptrElemento->setAgregado(true);
+	//creamos un puntero que apunte al elemento que se desea agregar
+	cElementosSeguridad* ptrElemento = listaElementosSeguridad->BuscarItem(elementoAgregar);
+	ptrElemento->setCantidad(cantidad); //cambiamos la cantidad
+	ptrElemento->setAgregado(true); //y cambiamos su estado
 }
 float cAlquiler::actualizarMontoTotal()
 {
 	float monto = 0;
-	unsigned int dias = fechaInicioReserva.calcularDiasDiferencia(&fechaFinReserva);
-	monto += vehiculo->calcularTarifa(dias);
-	monto += listaElementosSeguridad->calcularTarifa(dias);
-	this->montoTotal = monto;
-	return montoTotal;
+	unsigned int dias = fechaInicioReserva->calcularDiasDiferencia(fechaFinReserva); //calculamos los dias de alquiler (redondeando para arriba)
+	monto += vehiculo->calcularTarifa(dias); //acumulamos la tarifa de los vehiculos
+	monto += listaElementosSeguridad->calcularTarifa(dias); //y la de los elementos de seguridad
+	this->montoTotal = monto; //y actualizamos el monto
+	return montoTotal; //lo devolvemos para luego actualizar las ganancias de la empresa
 }
+
+#pragma region Getters
 cCliente* cAlquiler::getCliente()
 {
 	return cliente;
@@ -108,6 +116,13 @@ int cAlquiler::getElementoSeguridad(int pos)
 {
 	return (listaElementosSeguridad->getItem(pos))->getTipo();
 }
+string cAlquiler::getclave()const
+{
+	return to_string(codigoReserva);
+}
+#pragma endregion
+
+#pragma region Operators
 ostream& operator<<(ostream& os, cAlquiler* alquiler)
 {
 	if (alquiler == NULL)
@@ -115,3 +130,4 @@ ostream& operator<<(ostream& os, cAlquiler* alquiler)
 	os << alquiler->toString();
 	return os;
 }
+#pragma endregion
