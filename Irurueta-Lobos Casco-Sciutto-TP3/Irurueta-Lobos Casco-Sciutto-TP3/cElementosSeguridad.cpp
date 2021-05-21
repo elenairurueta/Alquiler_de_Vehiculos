@@ -57,4 +57,8 @@ string cElementosSeguridad::toString(string separador)
 {
 	return (separador + "Tipo: " + to_string(tipo) + separador + "Agregado? " + (agregado?("Si" + separador + "Cantidad: " + to_string(cantidad)):"No"));
 }
+void cElementosSeguridad::imprimir(string separador)
+{
+	cout << toString(separador) << endl;
+}
 #pragma endregion
