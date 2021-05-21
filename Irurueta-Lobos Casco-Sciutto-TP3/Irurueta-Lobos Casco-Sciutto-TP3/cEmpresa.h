@@ -15,16 +15,22 @@ class cEmpresa
 	float ganancia;
 
 public:
+	#pragma region Constructor y Destructor
 	cEmpresa(float ganancia = 0, cListaT<cVehiculo>* listaVehiculos = NULL, cListaAlquileres* listaAlquileres = NULL, cListaT<cCliente>* listaClientes = NULL);
 	~cEmpresa();
+	#pragma endregion
+	
 	void pasosMantenimiento(cVehiculo* vehiculo);
 	void mantenimiento(cVehiculo* vehiculo);
 	void adquirirVehiculo(cVehiculo* vehiculo);
 	cVehiculo* sacarCirculacionVehiculo(string clave);
 	void nuevoAlquiler(cAlquiler* alquiler);
+	void terminarAlquileres(cFecha* fechaActual);
+
+	#pragma region Getters
 	cVehiculo* getVehiculoCategoria(string categoria);
 	cVehiculo* getVehiculo(string clave);
-	void terminarAlquileres(cFecha* fechaActual);
 	cListaAlquileres* getListaAlquileres();
+	#pragma endregion
 };
 
