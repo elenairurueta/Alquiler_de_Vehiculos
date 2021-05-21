@@ -26,9 +26,9 @@ void agregarVehiculos(int cantidad, string tipo, cEmpresa* miEmpresa)
 void retirarVehiculoRandom(cEmpresa* miEmpresa) {
 	cVehiculo* vehiculoQuitado = miEmpresa->sacarCirculacionVehiculo(PATENTES[rand() % cantVehiculosAgregados]);
 	if(vehiculoQuitado == NULL)
-		cout << "El vehiculo " << vehiculoQuitado << " no puede ser sacado de circulacion porque se encuentra alquilado" << endl;
+		cout << "El vehiculo no puede ser sacado de circulacion porque se encuentra alquilado" << endl;
 	else 
-		cout << "Se saco de circulacion el vehiculo: " << vehiculoQuitado << endl;
+		cout << "Se saco de circulacion el vehiculo" << endl;
 }
 void nuevosAlquileres(int cantidad, cEmpresa* miEmpresa) {
 	cAlquiler* miAlquiler = NULL; cCliente* miCliente = NULL; cVehiculo* miVehiculo = NULL; cFecha fechaInicio = NULL; cFecha fechaFin = NULL;
@@ -70,5 +70,7 @@ void agregarElementosSeguridad(cAlquiler* miAlquiler, cVehiculo* miVehiculo) {
 		miAlquiler->agregarElementoSeguridad(elementoSeguridad, cantidadESagregar);
 	}
 }
-
+void mantenimientoVehiculoRandom(cEmpresa* miEmpresa) {
+	miEmpresa->mantenimiento(miEmpresa->getVehiculo(PATENTES[rand() % cantVehiculosAgregados]));
+}
 

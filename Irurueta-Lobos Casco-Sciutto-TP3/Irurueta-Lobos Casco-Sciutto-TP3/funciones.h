@@ -11,3 +11,4 @@ void retirarVehiculoRandom(cEmpresa* miEmpresa);
 void nuevosAlquileres(int cantidad, cEmpresa* miEmpresa);
 void getFechasRandomNuevoAlquiler(cFecha& fechaInicio, cFecha& fechaFin);
 void agregarElementosSeguridad(cAlquiler* miAlquiler, cVehiculo* miVehiculo);
+void mantenimientoVehiculoRandom(cEmpresa* miEmpresa);

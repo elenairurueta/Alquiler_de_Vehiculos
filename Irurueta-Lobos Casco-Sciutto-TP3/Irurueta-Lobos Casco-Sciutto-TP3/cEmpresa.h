@@ -23,5 +23,6 @@ public:
 	cVehiculo* sacarCirculacionVehiculo(string clave);
 	void nuevoAlquiler(cAlquiler* alquiler);
 	cVehiculo* getVehiculoCategoria(string categoria);
+	cVehiculo* getVehiculo(string clave);
 };
 

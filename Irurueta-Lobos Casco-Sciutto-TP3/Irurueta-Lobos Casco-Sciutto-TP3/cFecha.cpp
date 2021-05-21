@@ -117,25 +117,35 @@ int cFecha::compararFechas(cFecha* fechaComparar)
 
 unsigned int cFecha::calcularDiasDiferencia(cFecha* fechaComparar)
 { //diferencia = fechaActual - fechaComparar
-	tm fechaActual;
-	fechaActual.tm_year = this->anio;
-	fechaActual.tm_mon = this->mes;
-	fechaActual.tm_mday = this->dia;
-	fechaActual.tm_hour = this->hora;
-	fechaActual.tm_min = this->minutos;
-	fechaActual.tm_sec = this->segundos;
+	if (compararFechas(fechaComparar) == 0)
+		return 0;
+	tm* fechaActual = new tm();
+	fechaActual->tm_year = this->anio-1900;
+	fechaActual->tm_mon = this->mes-1;
+	fechaActual->tm_mday = this->dia;
+	fechaActual->tm_hour = this->hora;
+	fechaActual->tm_min = this->minutos;
+	fechaActual->tm_sec = this->segundos;
 
-	tm fechaComparacion;
-	fechaComparacion.tm_year = fechaComparar->anio;
-	fechaComparacion.tm_mon = fechaComparar->mes;
-	fechaComparacion.tm_mday = fechaComparar->dia;
-	fechaComparacion.tm_hour = fechaComparar->hora;
-	fechaComparacion.tm_min = fechaComparar->minutos;
-	fechaComparacion.tm_sec = fechaComparar->segundos;
+	time_t t = time(0);
+	struct tm* fechaComparacion = localtime(&t);
+	//struct tm* fechaComparacionPTR = &fechaComparacion;
+	fechaComparacion->tm_year = int(fechaComparar->anio)-1900;
+	fechaComparacion->tm_mon = int(fechaComparar->mes)-1;
+	fechaComparacion->tm_mday = int(fechaComparar->dia);
+	fechaComparacion->tm_hour = int(fechaComparar->hora);
+	fechaComparacion->tm_min = int(fechaComparar->minutos);
+	fechaComparacion->tm_sec = int(fechaComparar->segundos);
+	fechaComparacion->tm_wday = 0;
+	fechaComparacion->tm_yday = 0;
+	fechaComparacion->tm_isdst = 0;
 
-	double dias = difftime(mktime(&fechaComparacion), mktime(&fechaActual)) / (60 * 60 * 24);
-	//TODO: ARREGLAR diferencia de dias
+	time_t fechaComparacion2 = mktime(fechaComparacion);
+	time_t fechaActual2 = mktime(fechaActual);
+	double dias = difftime(fechaComparacion2, fechaActual2) / (60 * 60 * 24);
+	//TODO: ARREGLAR diferencia de dias (mktime)
 	//TODO: verificar redondeo para abajo
+	delete fechaActual, fechaComparacion;
 	dias++;
 	return unsigned int(dias);
 }

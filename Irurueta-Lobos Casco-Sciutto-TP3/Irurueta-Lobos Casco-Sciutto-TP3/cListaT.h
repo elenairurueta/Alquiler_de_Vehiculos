@@ -149,7 +149,7 @@ T* cListaT<T>::QuitarenPos(unsigned int pos) {
 
 	if (pos >= CA)throw new exception("Posicion invalida");
 
-	T* aux = vector[pos];
+	T* aux = vector[pos]; //TODO: verificar que no se copie por referencia (que no devuelva el puntero vacio)
 
 	for (unsigned int i = 0; i < CA - 1; i++)
 	{

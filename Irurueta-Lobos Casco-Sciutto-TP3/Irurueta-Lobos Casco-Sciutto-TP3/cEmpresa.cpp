@@ -42,6 +42,7 @@ void cEmpresa::pasosMantenimiento(cVehiculo* vehiculo)
 
 void cEmpresa::mantenimiento(cVehiculo* vehiculo)
 {
+	//TODO: verificar que no este alquilado
 	cout << "\n\nVehiculo en mantenimiento: " << vehiculo << endl;
 	pasosMantenimiento(vehiculo);
 	vehiculo->actualizarUltimoMantenimiento();
@@ -108,4 +109,9 @@ cVehiculo* cEmpresa::getVehiculoCategoria(string categoria)
 		}
 	}
 	return NULL;
+}
+
+cVehiculo* cEmpresa::getVehiculo(string clave)
+{
+	return listaVehiculos->BuscarItem(clave);
 }
