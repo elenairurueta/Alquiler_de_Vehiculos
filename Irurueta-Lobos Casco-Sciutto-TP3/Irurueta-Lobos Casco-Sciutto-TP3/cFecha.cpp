@@ -115,21 +115,52 @@ int cFecha::compararFechas(cFecha* fechaComparar)
 	return -2;
 }
 
+int cFecha::compararDias(cFecha* fechaComparar)
+{
+	if (fechaComparar == NULL)
+		return -2;
+	if (anio > fechaComparar->anio)
+		return -1;
+	else if (anio < fechaComparar->anio)
+		return 1;
+	else if (anio == fechaComparar->anio)
+	{
+		if (mes > fechaComparar->mes)
+			return -1;
+		else if (mes < fechaComparar->mes)
+			return 1;
+		else if (mes == fechaComparar->mes)
+		{
+			if (dia > fechaComparar->dia)
+				return -1;
+			else if (dia < fechaComparar->dia)
+				return 1;
+			else if (dia == fechaComparar->dia)
+			{
+				return 0;				
+			}
+		}
+	}
+	return -2;
+}
+
 unsigned int cFecha::calcularDiasDiferencia(cFecha* fechaComparar)
-{ //diferencia = fechaActual - fechaComparar
+{ 
 	if (compararFechas(fechaComparar) == 0)
 		return 0;
-	tm* fechaActual = new tm();
-	fechaActual->tm_year = this->anio-1900;
-	fechaActual->tm_mon = this->mes-1;
-	fechaActual->tm_mday = this->dia;
-	fechaActual->tm_hour = this->hora;
-	fechaActual->tm_min = this->minutos;
-	fechaActual->tm_sec = this->segundos;
-
 	time_t t = time(0);
+	struct tm* fechaInstanciaActual = localtime(&t);
+	fechaInstanciaActual->tm_year = this->anio-1900;
+	fechaInstanciaActual->tm_mon = this->mes-1;
+	fechaInstanciaActual->tm_mday = this->dia;
+	fechaInstanciaActual->tm_hour = this->hora;
+	fechaInstanciaActual->tm_min = this->minutos;
+	fechaInstanciaActual->tm_sec = this->segundos;
+	fechaInstanciaActual->tm_wday = 0;
+	fechaInstanciaActual->tm_yday = 0;
+	fechaInstanciaActual->tm_isdst = 0;
+
 	struct tm* fechaComparacion = localtime(&t);
-	//struct tm* fechaComparacionPTR = &fechaComparacion;
 	fechaComparacion->tm_year = int(fechaComparar->anio)-1900;
 	fechaComparacion->tm_mon = int(fechaComparar->mes)-1;
 	fechaComparacion->tm_mday = int(fechaComparar->dia);
@@ -141,11 +172,8 @@ unsigned int cFecha::calcularDiasDiferencia(cFecha* fechaComparar)
 	fechaComparacion->tm_isdst = 0;
 
 	time_t fechaComparacion2 = mktime(fechaComparacion);
-	time_t fechaActual2 = mktime(fechaActual);
+	time_t fechaActual2 = mktime(fechaInstanciaActual);
 	double dias = difftime(fechaComparacion2, fechaActual2) / (60 * 60 * 24);
-	//TODO: ARREGLAR diferencia de dias (mktime)
-	//TODO: verificar redondeo para abajo
-	delete fechaActual, fechaComparacion;
 	dias++;
 	return unsigned int(dias);
 }
@@ -207,3 +235,8 @@ void cFecha::imprimir()
 	cout << toString() << endl;
 }
 #pragma endregion
+ostream& operator<<(ostream& os, cFecha* fecha)
+{
+	os << fecha->toString();
+	return os;
+}

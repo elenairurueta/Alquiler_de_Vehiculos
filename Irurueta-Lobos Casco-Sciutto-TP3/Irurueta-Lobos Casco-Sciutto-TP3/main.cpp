@@ -6,13 +6,18 @@ using namespace std;
 
 int main() {
 
-	cEmpresa* miEmpresa = new cEmpresa(1000000);
-	agregarVehiculos(10, "automovil", miEmpresa);
-	agregarVehiculos(10, "camioneta", miEmpresa);
-	agregarVehiculos(10, "trafic", miEmpresa);
-	agregarVehiculos(10, "motocicleta", miEmpresa);
+	fechaActual->actualizarFecha();
+	imprimirFechaActual();
 
-	nuevosAlquileres(40, miEmpresa);
+	cEmpresa* miEmpresa = new cEmpresa(1000000);
+	agregarVehiculos(20, "automovil", miEmpresa);
+	agregarVehiculos(20, "camioneta", miEmpresa);
+	agregarVehiculos(20, "trafic", miEmpresa);
+	agregarVehiculos(20, "motocicleta", miEmpresa);
+
+	nuevosAlquileres(30, miEmpresa);
+	for(int i = 0; i < 15; i++)
+		diaSiguiente(miEmpresa);
 
 	retirarVehiculoRandom(miEmpresa);
 	mantenimientoVehiculoRandom(miEmpresa);
@@ -36,7 +41,7 @@ int main() {
 	//cout << automovil->calcularTarifa(2) << endl;
 	//delete automovil, lista, alquiler, otroalquiler;
 	delete miEmpresa;
-
+	delete fechaActual;
 	system("pause");
 	return 0;
 }

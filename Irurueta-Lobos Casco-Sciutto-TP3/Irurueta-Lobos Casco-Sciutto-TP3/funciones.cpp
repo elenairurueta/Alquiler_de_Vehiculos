@@ -2,7 +2,7 @@
 
 int cantVehiculosAgregados = 0;
 int cantClientesAgregados = 0;
-
+cFecha* fechaActual = new cFecha();
 
 void agregarVehiculos(int cantidad, string tipo, cEmpresa* miEmpresa)
 {
@@ -49,7 +49,7 @@ void nuevosAlquileres(int cantidad, cEmpresa* miEmpresa) {
 			miEmpresa->nuevoAlquiler(miAlquiler);
 		}
 		catch (exception* ex) {
-			cout << ex->what() << endl;
+			cout << ex->what() << endl; delete ex;
 		}
 		cantClientesAgregados++;
 	}
@@ -58,7 +58,7 @@ void nuevosAlquileres(int cantidad, cEmpresa* miEmpresa) {
 void getFechasRandomNuevoAlquiler(cFecha& fechaInicio, cFecha& fechaFin) {
 	fechaInicio.actualizarFecha(); fechaFin.actualizarFecha();
 	srand(time(NULL));
-	short randomDiasInicio = rand() % 16 + 1; short randomMesesInicio = rand() % 2;
+	short randomDiasInicio = rand() % 10 + 1; short randomMesesInicio = rand() % 2;
 	short randomDiasDiferencia = rand() % 20 + 1; short randomMesesDiferencia = rand() % 2;
 	fechaInicio.incrementarFecha(randomDiasInicio, randomMesesInicio);
 	fechaFin.incrementarFecha(randomDiasInicio + randomDiasDiferencia, randomMesesInicio + randomMesesDiferencia);
@@ -73,4 +73,19 @@ void agregarElementosSeguridad(cAlquiler* miAlquiler, cVehiculo* miVehiculo) {
 void mantenimientoVehiculoRandom(cEmpresa* miEmpresa) {
 	miEmpresa->mantenimiento(miEmpresa->getVehiculo(PATENTES[rand() % cantVehiculosAgregados]));
 }
-
+void imprimirFechaActual() {
+	system("cls");
+	cout << "\n\n\t\t\t[ " << fechaActual << " ]\n\n";
+}
+void diaSiguiente(cEmpresa* miEmpresa)
+{
+	fechaActual->incrementarFecha(1);
+	try {
+		miEmpresa->terminarAlquileres(fechaActual);
+	}
+	catch (exception* ex) {
+		cout << ex->what() << endl;
+		delete ex;
+	}
+	imprimirFechaActual();
+}

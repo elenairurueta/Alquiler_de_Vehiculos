@@ -67,3 +67,16 @@ bool cListaAlquileres::chequearVehiculoEnAlquiler(cVehiculo* vehiculoBuscar)
 	}
 	return false;
 }
+
+void cListaAlquileres::quitarPorFecha(cFecha* fecha)
+{
+	cAlquiler* alquilerQuitado = NULL;
+	for (unsigned int i = 0; i < CA; i++){
+		if (vector[i]->fechaFinReserva.compararDias(fecha) == 0)
+		{
+			alquilerQuitado = QuitarenPos(i);
+			if (alquilerQuitado != NULL)
+				delete alquilerQuitado; //TODO ??
+		}
+	}
+}

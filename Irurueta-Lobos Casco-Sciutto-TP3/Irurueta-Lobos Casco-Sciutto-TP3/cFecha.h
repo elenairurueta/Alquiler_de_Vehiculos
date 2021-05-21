@@ -30,6 +30,8 @@ public:
 	void actualizarFecha();
 	//devuelve -1 si fechaComparar es más antigua, 1 si es más reciente y 0 si son iguales
 	int compararFechas(cFecha* fechaComparar);
+	//devuelve -1 si fechaComparar es más antigua, 1 si es más reciente y 0 si son iguales
+	int compararDias(cFecha* fechaComparar);
 	//devuelve la cantidad de días que pasaron entre una fecha y la otra (redondeando para arriba)
 	unsigned int calcularDiasDiferencia(cFecha* fechaComparar);
 	void incrementarFecha(short dia = 0, short mes = 0, short anio = 0, short hora = 0, short minutos = 0, short segundos = 0);
@@ -39,3 +41,4 @@ private:
 	void verificarFecha();
 #pragma endregion
 };
+ostream& operator<<(ostream& out, cFecha* fecha);

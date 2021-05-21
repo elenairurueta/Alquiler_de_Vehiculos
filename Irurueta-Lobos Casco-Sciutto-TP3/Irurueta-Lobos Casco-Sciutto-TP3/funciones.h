@@ -3,6 +3,8 @@
 #include "datosVehiculos.h"
 #include "datosClientes.h"
 
+
+extern cFecha *fechaActual;
 extern int cantVehiculosAgregados;
 extern int cantClientesAgregados;
 
@@ -12,3 +14,5 @@ void nuevosAlquileres(int cantidad, cEmpresa* miEmpresa);
 void getFechasRandomNuevoAlquiler(cFecha& fechaInicio, cFecha& fechaFin);
 void agregarElementosSeguridad(cAlquiler* miAlquiler, cVehiculo* miVehiculo);
 void mantenimientoVehiculoRandom(cEmpresa* miEmpresa);
+void imprimirFechaActual();
+void diaSiguiente(cEmpresa* miEmpresa);

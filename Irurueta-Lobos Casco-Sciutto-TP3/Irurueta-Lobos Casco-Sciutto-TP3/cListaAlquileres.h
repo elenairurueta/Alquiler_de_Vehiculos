@@ -13,6 +13,6 @@ public:
     void listarPorTipoVehiculo(); 
     float calcularGananciaTotal();
     bool chequearVehiculoEnAlquiler(cVehiculo* vehiculoBuscar);
-
+    void quitarPorFecha(cFecha* fecha);
 };
 

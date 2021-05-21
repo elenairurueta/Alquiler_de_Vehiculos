@@ -115,3 +115,8 @@ cVehiculo* cEmpresa::getVehiculo(string clave)
 {
 	return listaVehiculos->BuscarItem(clave);
 }
+
+void cEmpresa::terminarAlquileres(cFecha* fechaActual)
+{
+	listaAlquileres->quitarPorFecha(fechaActual);
+}
