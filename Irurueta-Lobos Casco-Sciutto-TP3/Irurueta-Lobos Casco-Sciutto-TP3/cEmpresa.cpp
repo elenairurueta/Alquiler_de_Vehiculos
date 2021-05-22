@@ -71,7 +71,8 @@ void cEmpresa::nuevoAlquiler(cAlquiler* alquiler)
 		(*listaClientes) += (alquiler->getCliente());
 	}
 	ganancia += alquiler->actualizarMontoTotal();
-	if (!listaAlquileres->AgregarItem(alquiler))
+	bool sePudoAgregar = listaAlquileres->AgregarItem(alquiler);
+	if (!sePudoAgregar)
 		throw new exception("El alquiler que se está intentado agregar ya se encuentra en la lista");
 }
 

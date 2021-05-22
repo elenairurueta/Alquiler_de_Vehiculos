@@ -37,9 +37,9 @@ void retirarVehiculoRandom(cEmpresa* miEmpresa) {
 }
 void nuevosAlquileres(int cantidad, cEmpresa* miEmpresa) {
 	cAlquiler* miAlquiler = NULL; cCliente* miCliente = NULL; cVehiculo* miVehiculo = NULL;
+	srand(time(NULL));
 	for (int i = 0; i < cantidad; i++)
 	{
-		srand(time(NULL));
 		miCliente = new cCliente(NOMBRES[cantClientesAgregados], DNIS[cantClientesAgregados], TELEFONOS[cantClientesAgregados]);
 		
 		miVehiculo = miEmpresa->getVehiculoCategoria(CATEGORIAS[rand() % cantCATEGORIAS]);
@@ -65,9 +65,10 @@ void getFechasRandomNuevoAlquiler(cFecha* fechaInicio, cFecha* fechaFin) {
 	if ((fechaInicio == NULL) || (fechaFin == NULL))
 		return;
 	fechaInicio->actualizarFecha(); fechaFin->actualizarFecha();
-	srand(time(NULL));
 	short randomDiasInicio = rand() % 5 + 1; short randomMesesInicio = 0;//rand() % 2;
 	short randomDiasDiferencia = rand() % 10 + 1; short randomMesesDiferencia = 0;// rand() % 2;
+	cout << randomDiasInicio << " - " << randomDiasDiferencia << endl;
+	system("pause");
 	fechaInicio->incrementarFecha(randomDiasInicio, randomMesesInicio);
 	fechaFin->incrementarFecha(randomDiasInicio + randomDiasDiferencia, randomMesesInicio + randomMesesDiferencia);
 }

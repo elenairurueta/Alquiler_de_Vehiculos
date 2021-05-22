@@ -22,6 +22,12 @@ cAlquiler::cAlquiler(cFecha* fechaInicioReserva, cFecha* fechaFinReserva, cClien
 }
 cAlquiler::~cAlquiler()
 {
+	if (!NULL)
+		delete fechaInicioReserva;
+	if (!NULL)
+		delete fechaFinReserva;
+	if (!NULL)
+		delete listaElementosSeguridad;
 }
 #pragma endregion
 
