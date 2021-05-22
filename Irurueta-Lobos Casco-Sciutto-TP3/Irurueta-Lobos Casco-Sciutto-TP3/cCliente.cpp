@@ -33,3 +33,4 @@ ostream& operator<<(ostream& os, cCliente* cliente)
 	os << cliente->toString("\n");
 	return os;
 }
+#pragma endregion

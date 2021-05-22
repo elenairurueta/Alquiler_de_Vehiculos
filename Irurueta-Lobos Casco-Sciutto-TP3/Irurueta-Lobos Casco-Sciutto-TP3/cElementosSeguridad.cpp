@@ -1,4 +1,6 @@
 #include "cElementosSeguridad.h"
+
+#pragma region Constructor y Destructor
 cElementosSeguridad::cElementosSeguridad(int tipo, bool agregado, int cantidad, float precio):precio(precio)
 {
 	this->tipo = tipo;
@@ -8,7 +10,9 @@ cElementosSeguridad::cElementosSeguridad(int tipo, bool agregado, int cantidad, 
 cElementosSeguridad::~cElementosSeguridad()
 {
 }
+#pragma endregion
 
+#pragma region Getters
 string cElementosSeguridad::getclave()
 {
 	switch (tipo)
@@ -25,28 +29,36 @@ string cElementosSeguridad::getclave()
 		return "";
 	}
 }
-
-void cElementosSeguridad::setCantidad(int cantidad)
-{
-	this->cantidad = cantidad;
-}
-
-void cElementosSeguridad::setAgregado(bool agregado)
-{
-	this->agregado = agregado;
-}
-
-string cElementosSeguridad::toString(string separador)
-{
-	return (separador + "Tipo: " + to_string(tipo) + separador + "Agregado? " + (agregado?("Si" + separador + "Cantidad: " + to_string(cantidad)):"No"));
-}
-
 float cElementosSeguridad::getPrecioTotal()
 {
-	return (precio*cantidad);
+	return (precio*cantidad); //precio total de un elemento de seguridad
 }
 
 int cElementosSeguridad::getTipo()
 {
 	return tipo;
 }
+
+#pragma endregion
+
+#pragma region Setters
+void cElementosSeguridad::setCantidad(int cantidad)
+{
+	this->cantidad = cantidad;
+}
+void cElementosSeguridad::setAgregado(bool agregado)
+{
+	this->agregado = agregado;
+}
+#pragma endregion
+
+#pragma region toString() e imprimir()
+string cElementosSeguridad::toString(string separador)
+{
+	return (separador + "Tipo: " + to_string(tipo) + separador + "Agregado? " + (agregado?("Si" + separador + "Cantidad: " + to_string(cantidad)):"No"));
+}
+void cElementosSeguridad::imprimir(string separador)
+{
+	cout << toString(separador) << endl;
+}
+#pragma endregion

@@ -1,5 +1,6 @@
 #include "cEmpresa.h"
 
+#pragma region Constructor y Destructor
 cEmpresa::cEmpresa(float ganancia, cListaT<cVehiculo>* listaVehiculos, cListaAlquileres* listaAlquileres, cListaT<cCliente>* listaClientes)
 {
 	this->ganancia = ganancia;
@@ -13,7 +14,6 @@ cEmpresa::cEmpresa(float ganancia, cListaT<cVehiculo>* listaVehiculos, cListaAlq
 		listaClientes = new cListaT<cCliente>();
 	this->listaClientes = listaClientes;
 }
-
 cEmpresa::~cEmpresa()
 {
 	if (listaVehiculos != NULL)
@@ -23,12 +23,14 @@ cEmpresa::~cEmpresa()
 	if (listaClientes != NULL)
 		delete listaClientes;
 }
+#pragma endregion
 
 void cEmpresa::pasosMantenimiento(cVehiculo* vehiculo)
 {
+	//hacemos dynamic cast para idenificar que vehículo es el pasado por parámetro
 	cAutomovil* ptrAutomovil = dynamic_cast<cAutomovil*>(vehiculo);
 	if (ptrAutomovil != NULL)
-		cout << "\n\nPasos Mantenimiento AUTOMOVIL" << cAutomovil::getPasosMantenimiento() << endl;	
+		cout << "\n\nPasos Mantenimiento AUTOMOVIL" << cAutomovil::getPasosMantenimiento() << endl; //e imprimimos los pasos mantenimiento que correspondan
 	cCamioneta* ptrCamioneta = dynamic_cast<cCamioneta*>(vehiculo);
 	if (ptrCamioneta != NULL)
 		cout << "\n\nPasos Mantenimiento CAMIONETA" << cCamioneta::getPasosMantenimiento() << endl;
@@ -39,21 +41,26 @@ void cEmpresa::pasosMantenimiento(cVehiculo* vehiculo)
 	if (ptrTrafic != NULL)
 		cout << "\n\nPasos Mantenimiento TRAFIC" << cTrafic::getPasosMantenimiento() << endl;
 }
-
 void cEmpresa::mantenimiento(cVehiculo* vehiculo)
 {
+	if(vehiculo == NULL)
+		return;
 	//TODO: verificar que no este alquilado
+	if(listaAlquileres->chequearVehiculoEnAlquiler(vehiculo) == true){
+		cout << "\n\nNo se puede realizar el mantenimiento del vehiculo " << vehiculo->getclave() << " porque se encuentra alquilado." << endl;
+		return;
+	}
 	cout << "\n\nVehiculo en mantenimiento: " << vehiculo << endl;
 	pasosMantenimiento(vehiculo);
 	vehiculo->actualizarUltimoMantenimiento();
 }
-
 void cEmpresa::adquirirVehiculo(cVehiculo* vehiculo)
 {
+	if(vehiculo == NULL)
+		return;
 	listaVehiculos->AgregarItem(vehiculo);
 	ganancia -= vehiculo->getPrecioCompraVehiculo();
 }
-
 cVehiculo* cEmpresa::sacarCirculacionVehiculo(string clave)
 {
 	cVehiculo* vehiculo = listaVehiculos->BuscarItem(clave);
@@ -63,9 +70,10 @@ cVehiculo* cEmpresa::sacarCirculacionVehiculo(string clave)
 		return NULL;
 	return(listaVehiculos->Quitar(vehiculo));
 }
-
 void cEmpresa::nuevoAlquiler(cAlquiler* alquiler)
 {
+	if(alquiler == NULL)
+		return;
 	cCliente* clienteBuscar = listaClientes->BuscarItem(alquiler->getCliente()->getclave());
 	if (clienteBuscar == NULL) {
 		(*listaClientes) += (alquiler->getCliente());
@@ -73,9 +81,16 @@ void cEmpresa::nuevoAlquiler(cAlquiler* alquiler)
 	ganancia += alquiler->actualizarMontoTotal();
 	bool sePudoAgregar = listaAlquileres->AgregarItem(alquiler);
 	if (!sePudoAgregar)
-		throw new exception("El alquiler que se est� intentado agregar ya se encuentra en la lista");
+		throw new exception("El alquiler que se está intentado agregar ya se encuentra en la lista");
+}
+void cEmpresa::terminarAlquileres(cFecha* fechaActual)
+{
+	if(fechaActual == NULL)
+		return;
+	listaAlquileres->quitarPorFecha(fechaActual);
 }
 
+#pragma region Getters
 cVehiculo* cEmpresa::getVehiculoCategoria(string categoria)
 {
 	for (int i = 0; i < listaVehiculos->getCA(); i++) {
@@ -111,18 +126,21 @@ cVehiculo* cEmpresa::getVehiculoCategoria(string categoria)
 	}
 	return NULL;
 }
-
 cVehiculo* cEmpresa::getVehiculo(string clave)
 {
 	return listaVehiculos->BuscarItem(clave);
 }
-
-void cEmpresa::terminarAlquileres(cFecha* fechaActual)
-{
-	listaAlquileres->quitarPorFecha(fechaActual);
-}
-
 cListaAlquileres* cEmpresa::getListaAlquileres()
 {
 	return listaAlquileres;
 }
+#pragma endregion
+
+#pragma region toString() e imprimir()
+string cEmpresa::toString(string separador){
+	return(separador + "Ganancia: " + ganancia + separador + "Lista Clientes: " + listaClientes->toString() + separador + "Lista Vehiculos: " + listaVehiculos->toString() + separador + "Lista Alquileres: " + listaAlquileres->toString());
+}
+void cEmpresa::imprimir(string separador){
+	cout << toString(separador) << endl;
+}
+#pragma endregion
