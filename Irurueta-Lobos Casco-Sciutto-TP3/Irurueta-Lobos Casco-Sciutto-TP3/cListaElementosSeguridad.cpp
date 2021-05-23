@@ -2,6 +2,7 @@
 
 cListaElementosSeguridad::cListaElementosSeguridad(string tipoVehiculo, int cantidadElementos) :cListaT<cElementosSeguridad>(cantidadElementos)
 {
+	//se construye la lista con los elementos posibles para cada vehiculo
 	if ((tipoVehiculo.compare("automovil") == 0) || (tipoVehiculo.compare("trafic") == 0) || (tipoVehiculo.compare("camioneta") == 0))
 	{
 		cElementosSeguridad* elemento1 = new cElementosSeguridad(SILLA_NINOS, false, 0, PrecioSILLA);
@@ -30,7 +31,7 @@ cListaElementosSeguridad::~cListaElementosSeguridad()
 float cListaElementosSeguridad::calcularTarifa(unsigned int dias)
 {
 	float acum = 0;
-	for (unsigned int i = 0; i < CA; i++)
-		acum += vector[i]->getPrecioTotal();
-	return (acum*dias);
+	for (unsigned int i = 0; i < CA; i++) //recorremos la lista de elementos
+		acum += vector[i]->getPrecioTotal(); //y acumulamos el precio por día de los elementos
+	return (acum*dias); //y lo multiplicamos por la cantidad de días
 }

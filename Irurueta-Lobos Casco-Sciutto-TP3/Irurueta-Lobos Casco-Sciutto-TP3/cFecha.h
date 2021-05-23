@@ -26,6 +26,7 @@ public:
 	string toString(string separador = "-", bool conHora = true);
 	//imprime todos los atributos de la clase
 	void imprimir();
+
 	//actualiza la fecha a la actual
 	void actualizarFecha();
 	//devuelve -1 si fechaComparar es más antigua, 1 si es más reciente y 0 si son iguales

@@ -9,6 +9,7 @@ class cListaElementosSeguridad :
 public:
     cListaElementosSeguridad(string tipoVehiculo, int cantidadElementos);
     ~cListaElementosSeguridad();
+    //calcula el costo total de los elementos de seguridad para la cantidad de días pasada por parámetro
     float calcularTarifa(unsigned int dias);
 };
 
