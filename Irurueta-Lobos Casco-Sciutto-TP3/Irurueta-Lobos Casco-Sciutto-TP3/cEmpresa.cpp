@@ -45,7 +45,6 @@ void cEmpresa::mantenimiento(cVehiculo* vehiculo)
 {
 	if(vehiculo == NULL)
 		return;
-	//TODO: verificar que no este alquilado
 	if(listaAlquileres->chequearVehiculoEnAlquiler(vehiculo) == true){
 		cout << "\n\nNo se puede realizar el mantenimiento del vehiculo " << vehiculo->getclave() << " porque se encuentra alquilado." << endl;
 		return;
@@ -68,7 +67,8 @@ cVehiculo* cEmpresa::sacarCirculacionVehiculo(string clave)
 		return NULL;
 	if (listaAlquileres->chequearVehiculoEnAlquiler(vehiculo))
 		return NULL;
-	return(listaVehiculos->Quitar(vehiculo));
+	cVehiculo* vehiculoQuitado = listaVehiculos->Quitar(vehiculo);
+	return vehiculoQuitado;
 }
 void cEmpresa::nuevoAlquiler(cAlquiler* alquiler)
 {
@@ -83,11 +83,11 @@ void cEmpresa::nuevoAlquiler(cAlquiler* alquiler)
 	if (!sePudoAgregar)
 		throw new exception("El alquiler que se está intentado agregar ya se encuentra en la lista");
 }
-void cEmpresa::terminarAlquileres(cFecha* fechaActual)
+cListaAlquileres* cEmpresa::terminarAlquileres(cFecha* fechaActual)
 {
 	if(fechaActual == NULL)
-		return;
-	listaAlquileres->quitarPorFecha(fechaActual);
+		return NULL;
+	return (listaAlquileres->quitarPorFecha(fechaActual));
 }
 
 #pragma region Getters
@@ -138,7 +138,7 @@ cListaAlquileres* cEmpresa::getListaAlquileres()
 
 #pragma region toString() e imprimir()
 string cEmpresa::toString(string separador){
-	return(separador + "Ganancia: " + ganancia + separador + "Lista Clientes: " + listaClientes->toString() + separador + "Lista Vehiculos: " + listaVehiculos->toString() + separador + "Lista Alquileres: " + listaAlquileres->toString());
+	return(separador + "Ganancia: " + to_string(ganancia) + separador + "Lista Clientes: " + listaClientes->toString() + separador + "Lista Vehiculos: " + listaVehiculos->toString() + separador + "Lista Alquileres: " + listaAlquileres->toString());
 }
 void cEmpresa::imprimir(string separador){
 	cout << toString(separador) << endl;

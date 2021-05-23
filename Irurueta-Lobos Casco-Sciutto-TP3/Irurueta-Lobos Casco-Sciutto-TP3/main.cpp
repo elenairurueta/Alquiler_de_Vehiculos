@@ -15,32 +15,26 @@ int main() {
 	agregarVehiculos(20, "trafic", miEmpresa);
 	agregarVehiculos(20, "motocicleta", miEmpresa);
 
-	nuevosAlquileres(30, miEmpresa);
-	for(int i = 0; i < 25; i++)
+	nuevosAlquileres(20, miEmpresa);
+	for(int i = 0; i < 20; i++)
 		diaSiguiente(miEmpresa);
 
+	system("pause"); system("cls");
 	retirarVehiculoRandom(miEmpresa);
 	mantenimientoVehiculoRandom(miEmpresa);
 
+	system("pause"); system("cls");
 	miEmpresa->getListaAlquileres()->listarPorTipoVehiculo();
-	////UNDONE: prueba operador <<
-	//cAutomovil* automovil = new cAutomovil();
-	//cout << automovil << endl;
-	//cAlquiler* alquiler = new cAlquiler();
-	//cout << alquiler << endl;
-	//
-	////UNDONE: prueba operador += y +
-	//cListaAlquileres* lista = new cListaAlquileres();
-	//cAlquiler* otroalquiler = new cAlquiler();
-	//(*lista += alquiler) + otroalquiler;
+	system("pause"); system("cls");
 
-	////UNDONE: prueba operador []
-	//(*lista)[0] = otroalquiler; 
+	cout << "Lista de alquileres: " << endl;
+	miEmpresa->getListaAlquileres()->Listar("\n\n");
+	system("pause"); system("cls");
 
-	////UNDONE: prueba tipos vehiculo
-	//cout << automovil->getTipoVehiculo() << endl;
-	//cout << automovil->calcularTarifa(2) << endl;
-	//delete automovil, lista, alquiler, otroalquiler;
+	cout << "prueba sobrecarga [] y <<" << endl;
+	cout << (*(miEmpresa->getListaAlquileres()))[0] << endl;
+	system("pause"); system("cls");
+
 	delete miEmpresa;
 	delete fechaActual;
 	system("pause");

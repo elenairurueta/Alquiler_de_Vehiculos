@@ -107,7 +107,8 @@ string cListaT<T>::toString(string separador) {
 	string cadena = "";
 	for (unsigned int i = 0; i < CA; i++)
 	{
-		cadena += vector[i]->toString(separador);
+		cadena += separador;
+		cadena += vector[i]->toString(separador + "\t\t");
 	}
 	return cadena;
 }
@@ -146,18 +147,15 @@ T* cListaT<T>::Quitar(const T* item) {
 }
 template<class T>
 T* cListaT<T>::QuitarenPos(unsigned int pos) {
-
-	if (pos >= CA)throw new exception("Posicion invalida");
-
-	T* aux = vector[pos]; //TODO: verificar que no se copie por referencia (que no devuelva el puntero vacio)
-
-	for (unsigned int i = 0; i < CA - 1; i++)
-	{
-		vector[i] = vector[i + 1];
-	}
-
-	vector[CA - 1] = NULL;
+	if(pos >= CA) return NULL;
+	T* aux = NULL;
+	aux = vector[pos];
 	CA--;
+	for (unsigned int j = pos; j < CA; j++)
+	{
+		vector[j] = vector[j + 1];
+	}
+	vector[CA] = NULL;
 	return aux;
 }
 
@@ -165,11 +163,8 @@ template<class T>
 void cListaT<T>::Eliminar(string clave) {
 
 	unsigned int pos = getItemPos(clave);
-
-	if (pos < CA)
-		Eliminar(pos);
-	//sino algo
-
+	if (pos >= CA)throw new exception("Posicion invalida");
+	Eliminar(pos);
 }
 template<class T>
 void cListaT<T>::Eliminar(const T* item) {
@@ -178,16 +173,10 @@ void cListaT<T>::Eliminar(const T* item) {
 }
 template<class T>
 void cListaT<T>::Eliminar(unsigned int pos) {
-	if (pos >= CA)return;// o Throw no pude eliminar
-
-	T* dato = QuitarenPos(pos);
-
-	if (dato != NULL)
-		delete dato;
-	else
-	{
-		throw new exception("no encontrado");
-	}
+	T* aux = QuitarenPos(pos);
+	if (aux != NULL)
+		delete aux;
+	else throw new exception("No se pudo eliminar");
 }
 
 template<class T>

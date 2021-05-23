@@ -244,7 +244,7 @@ void cFecha::incrementarFecha(short dia, short mes, short anio)
 }
 
 #pragma region toString e Imprimir
-string cFecha::toString(string separador)
+string cFecha::toString(string separador, bool conHora)
 {
 	string fechaStr = "";
 	if (dia < 10) {
@@ -260,8 +260,12 @@ string cFecha::toString(string separador)
 	else {
 		fechaStr += to_string(mes);
 	}
-	fechaStr += "/" + to_string(anio) + separador;
+	fechaStr += "/" + to_string(anio);
 
+	if(conHora == false) return fechaStr;
+
+
+	fechaStr += separador;
 	if (hora < 10) {
 		fechaStr += "0" + to_string(hora);
 	}

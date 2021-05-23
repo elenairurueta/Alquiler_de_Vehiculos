@@ -33,7 +33,8 @@ void retirarVehiculoRandom(cEmpresa* miEmpresa) {
 	if(vehiculoQuitado == NULL)
 		cout << "El vehiculo no puede ser sacado de circulacion porque se encuentra alquilado" << endl;
 	else 
-		cout << "Se saco de circulacion el vehiculo" << endl;
+		cout << "Se saco de circulacion el vehiculo: " << vehiculoQuitado << endl;
+	delete vehiculoQuitado;
 }
 void nuevosAlquileres(int cantidad, cEmpresa* miEmpresa) {
 	cAlquiler* miAlquiler = NULL; cCliente* miCliente = NULL; cVehiculo* miVehiculo = NULL;
@@ -65,10 +66,8 @@ void getFechasRandomNuevoAlquiler(cFecha* fechaInicio, cFecha* fechaFin) {
 	if ((fechaInicio == NULL) || (fechaFin == NULL))
 		return;
 	fechaInicio->actualizarFecha(); fechaFin->actualizarFecha();
-	short randomDiasInicio = rand() % 5 + 1; short randomMesesInicio = 0;//rand() % 2;
-	short randomDiasDiferencia = rand() % 10 + 1; short randomMesesDiferencia = 0;// rand() % 2;
-	cout << randomDiasInicio << " - " << randomDiasDiferencia << endl;
-	system("pause");
+	short randomDiasInicio = rand() % 5 + 1; short randomMesesInicio = rand() % 2;
+	short randomDiasDiferencia = rand() % 15 + 1; short randomMesesDiferencia = rand() % 2;
 	fechaInicio->incrementarFecha(randomDiasInicio, randomMesesInicio);
 	fechaFin->incrementarFecha(randomDiasInicio + randomDiasDiferencia, randomMesesInicio + randomMesesDiferencia);
 }
@@ -89,12 +88,25 @@ void imprimirFechaActual() {
 void diaSiguiente(cEmpresa* miEmpresa)
 {
 	fechaActual->incrementarFecha(1);
+	cListaAlquileres* alquileresQuitados = NULL;
 	try {
-		miEmpresa->terminarAlquileres(fechaActual);
+		alquileresQuitados = miEmpresa->terminarAlquileres(fechaActual);
 	}
 	catch (exception* ex) {
 		cout << ex->what() << endl;
 		delete ex;
 	}
+	
 	imprimirFechaActual();
+	if (alquileresQuitados == NULL)
+		cout << "\n\nNo hay ningún alquiler con fechaFin igual a la actual" << endl;
+	else if (alquileresQuitados->getCA() == 0) {
+		cout << "\n\nNo hay ningún alquiler con fechaFin igual a la actual" << endl;
+		delete alquileresQuitados;
+	}
+	else {
+		cout << "\n\nAlquileres finalizados hoy: \n" << alquileresQuitados->toString("\n\t") << endl;
+		delete alquileresQuitados;
+	}
+	system("pause");
 }

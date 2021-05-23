@@ -36,20 +36,20 @@ string cAlquiler::toString(string separador)
 {
 	string cadena = separador + "Codigo de Reserva: " + to_string(codigoReserva);
 	if (cliente != NULL)
-		cadena += separador + "Cliente: " + cliente->toString("\n");
+		cadena += separador + "Cliente: " + cliente->toString(separador + "\t");
 	if (vehiculo != NULL)
-		cadena += separador + "Vehiculo: " + vehiculo->getTipoVehiculo() + vehiculo->toString();
-	cadena += separador + "Fecha inicio: " + fechaInicioReserva->toString() + separador + "Fecha Fin: ";
+		cadena += separador + "Vehiculo: " + vehiculo->getTipoVehiculo() + vehiculo->toString(separador + "\t");
+	cadena += separador + "Fecha inicio: " + fechaInicioReserva->toString("", false) + separador + "Fecha Fin: ";
 	
 	cFecha* auxiliar = new cFecha();
 	if (fechaFinReserva->compararFechas(auxiliar) == 0)
 		cadena += "No definida";
 	else
-		cadena += fechaFinReserva->toString();
+		cadena += fechaFinReserva->toString("", false);
 	delete auxiliar;
 
 	if (listaElementosSeguridad != NULL)
-		cadena += separador + "Elementos de Seguridad: " + listaElementosSeguridad->toString();
+		cadena += separador + "Elementos de Seguridad: " + listaElementosSeguridad->toString(separador + "\t");
 	cadena += separador + "Monto total: " + to_string(montoTotal);
 	return cadena;
 }

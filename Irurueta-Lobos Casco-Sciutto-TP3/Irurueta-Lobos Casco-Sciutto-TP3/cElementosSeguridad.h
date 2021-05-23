@@ -1,5 +1,6 @@
 #pragma once
 #include <string>
+#include <iostream>
 using namespace std;
 typedef enum {CASCO, SILLA_NINOS, PORTAEQUIPAJE, ASIENTOS_REVERSIBLES};
 class cElementosSeguridad

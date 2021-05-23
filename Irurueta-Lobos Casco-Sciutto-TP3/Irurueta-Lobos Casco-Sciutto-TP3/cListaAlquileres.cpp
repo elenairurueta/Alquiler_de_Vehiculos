@@ -8,47 +8,53 @@ cListaAlquileres::~cListaAlquileres()
 {
 }
 
-void cListaAlquileres::listarPorTipoVehiculo()
+void cListaAlquileres::listarPorTipoVehiculo() 
 {
-	cListaAlquileres* listaAutomoviles = new cListaAlquileres(CA);
-	cListaAlquileres* listaMotocicletas = new cListaAlquileres(CA);
-	cListaAlquileres* listaCamionetas = new cListaAlquileres(CA);
-	cListaAlquileres* listaTrafics = new cListaAlquileres(CA);
-
+	cout << "\n\nAlquileres por tipo de vehiculo";
+	cout << "\n\n\tAutomoviles:" << endl;
+	float ganancia = 0;
 	for(int i = 0; i < CA; i++)
 	{
 		if (vector[i]->vehiculo->getTipoVehiculo() == "automovil"){
-			*listaAutomoviles += vector[i];
-		}else if (vector[i]->vehiculo->getTipoVehiculo() == "camioneta") {
-			*listaCamionetas += vector[i];
-
-		}else if (vector[i]->vehiculo->getTipoVehiculo() == "motocicleta") {
-			*listaMotocicletas += vector[i];
-
-		}else if (vector[i]->vehiculo->getTipoVehiculo() == "trafic") {
-			*listaTrafics += vector[i];
-
+			ganancia += vector[i]->montoTotal;
+			vector[i]->imprimir();
 		}
 	}
+	cout << "\n\n\t\tGanancia: " << to_string(ganancia) << endl;
 
-	cout << "\n\nAlquileres por tipo de vehiculo";
-	cout << "\n\n\tAutomoviles:" << endl;
-	listaAutomoviles->Listar("\n\n\t\t");
-	cout << "\n\n\t\tGanancia: " << to_string(listaAutomoviles->calcularGananciaTotal()) << endl;
-
+	ganancia = 0;
 	cout << "\n\n\tMotocicletas:" << endl;
-	listaMotocicletas->Listar("\n\n\t\t");
-	cout << "\n\n\t\tGanancia: " << to_string(listaMotocicletas->calcularGananciaTotal()) << endl;
+	for (int i = 0; i < CA; i++)
+	{
+		if (vector[i]->vehiculo->getTipoVehiculo() == "motocicleta") {
+			ganancia += vector[i]->montoTotal;
+			vector[i]->imprimir();
+		}
+	}
+	cout << "\n\n\t\tGanancia: " << to_string(ganancia) << endl;
 
+	ganancia = 0;
 	cout << "\n\n\tCamionetas:" << endl;
-	listaCamionetas->Listar("\n\n\t\t");
-	cout << "\n\n\t\tGanancia: " << to_string(listaCamionetas->calcularGananciaTotal()) << endl;
+	for (int i = 0; i < CA; i++)
+	{
+		if (vector[i]->vehiculo->getTipoVehiculo() == "camioneta") {
+			ganancia += vector[i]->montoTotal;
+			vector[i]->imprimir();
+		}
+	}
+	cout << "\n\n\t\tGanancia: " << to_string(ganancia) << endl;
 
+	ganancia = 0;
 	cout << "\n\n\tTrafics:" << endl;
-	listaTrafics->Listar("\n\n\t\t");
-	cout << "\n\n\t\tGanancia: " << to_string(listaTrafics->calcularGananciaTotal()) << endl;
+	for (int i = 0; i < CA; i++)
+	{
+		if (vector[i]->vehiculo->getTipoVehiculo() == "trafic") {
+			ganancia += vector[i]->montoTotal;
+			vector[i]->imprimir();
+		}
+	}
+	cout << "\n\n\t\tGanancia: " << to_string(ganancia) << endl;
 
-	delete listaAutomoviles, listaMotocicletas, listaCamionetas, listaTrafics;
 }
 
 float cListaAlquileres::calcularGananciaTotal()
@@ -68,22 +74,17 @@ bool cListaAlquileres::chequearVehiculoEnAlquiler(cVehiculo* vehiculoBuscar)
 	return false;
 }
 
-void cListaAlquileres::quitarPorFecha(cFecha* fecha)
+cListaAlquileres* cListaAlquileres::quitarPorFecha(cFecha* fecha)
 {
-	cAlquiler* alquilerQuitado = NULL;
+	cListaAlquileres* alquileresQuitados = new cListaAlquileres();
 	for (unsigned int i = 0; i < CA; i++){
-		if (vector[i] == NULL)
-			continue;
-
 		if (vector[i]->fechaFinReserva == NULL)
 			continue;
 
 		if (vector[i]->fechaFinReserva->compararDias(fecha) == 0)
 		{
-			alquilerQuitado = QuitarenPos(i);
-			if (alquilerQuitado != NULL)
-				delete alquilerQuitado; //TODO ??
-			i--;
+			alquileresQuitados->AgregarItem(QuitarenPos(i));
 		}
 	}
+	return alquileresQuitados;
 }

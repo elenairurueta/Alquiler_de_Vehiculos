@@ -23,7 +23,7 @@ public:
 
 #pragma region Metodos
 	//convierte todos los atributos de la clase en string
-	string toString(string separador = "-");
+	string toString(string separador = "-", bool conHora = true);
 	//imprime todos los atributos de la clase
 	void imprimir();
 	//actualiza la fecha a la actual

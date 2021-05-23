@@ -25,12 +25,18 @@ public:
 	void adquirirVehiculo(cVehiculo* vehiculo);
 	cVehiculo* sacarCirculacionVehiculo(string clave);
 	void nuevoAlquiler(cAlquiler* alquiler);
-	void terminarAlquileres(cFecha* fechaActual);
+	cListaAlquileres* terminarAlquileres(cFecha* fechaActual);
 
 	#pragma region Getters
 	cVehiculo* getVehiculoCategoria(string categoria);
 	cVehiculo* getVehiculo(string clave);
 	cListaAlquileres* getListaAlquileres();
 	#pragma endregion
+
+#pragma region toString() e imprimir()
+	string toString(string separador);
+	void imprimir(string separador);
+
+#pragma endregion
 };
 
