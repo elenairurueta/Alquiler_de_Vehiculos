@@ -36,7 +36,7 @@ public:
 	//devuelve la cantidad de días que pasaron entre una fecha y la otra (redondeando para arriba)
 	unsigned int calcularDiasDiferencia(cFecha* fechaComparar);
 	void incrementarFecha(short dia = 0, short mes = 0, short anio = 0);
-
+	bool operator>(cFecha* derecha);
 private:
 	//verifica que la fecha sea factible
 	void verificarFecha();

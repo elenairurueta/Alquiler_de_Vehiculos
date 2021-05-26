@@ -65,17 +65,36 @@ float cListaAlquileres::calcularGananciaTotal()
 	return acumGanancias; //para calcular la ganancia total de la lista de alquileres actual
 }
 
-bool cListaAlquileres::chequearVehiculoEnAlquiler(cVehiculo* vehiculoBuscar)
+bool cListaAlquileres::chequearVehiculoEnAlquiler(cVehiculo* vehiculoBuscar, cFecha* fechaInicio, cFecha* fechaFin)
 {
+	bool eliminar = false;
+	if (vehiculoBuscar == NULL)
+		return true;
+	if (fechaInicio == NULL || fechaFin == NULL)
+	{ //si no le pasamos las fechas por parámetro, nos fijamos si están en alquiler ahora;
+		fechaInicio = new cFecha(); fechaInicio->actualizarFecha();
+		fechaFin = new cFecha(); fechaFin->actualizarFecha(); fechaFin->incrementarFecha(1);
+		eliminar = true;
+	}
 	for (int i = 0; i < CA; i++) {
 		if ((vector[i]->vehiculo->getclave()).compare(vehiculoBuscar->getclave()) == 0) //si encontramos el vehiculo en la lista de alquileres
-			return true; //el vehiculo está en alquiler
+		{
+			if ((vector[i]->fechaFinReserva > fechaInicio) && (fechaFin > vector[i]->fechaInicioReserva)) {
+				if (eliminar)
+					delete fechaInicio, fechaFin;
+				return true; //el vehiculo está en alquiler
+			}
+		}
 	}
-	return false; //si no lo encontramos, no está en alquiler
+	if (eliminar)
+		delete fechaInicio, fechaFin;
+	return false; //si no lo encontramos o no coinciden las fechas, no está en alquiler
 }
 
 cListaAlquileres* cListaAlquileres::quitarPorFecha(cFecha* fecha) 
 {
+	if (fecha == NULL)
+		return NULL;
 	cListaAlquileres* alquileresQuitados = new cListaAlquileres();  //creamos una lista de alquileres para agregar los alquileres quitados
 	for (unsigned int i = 0; i < CA; i++){ //recorremos la lista de alquileres
 		if (vector[i]->fechaFinReserva == NULL)

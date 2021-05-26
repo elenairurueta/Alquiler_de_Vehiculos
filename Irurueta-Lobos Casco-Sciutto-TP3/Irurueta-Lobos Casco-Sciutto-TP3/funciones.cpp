@@ -46,16 +46,16 @@ void nuevosAlquileres(int cantidad, cEmpresa* miEmpresa) {
 	for (int i = 0; i < cantidad; i++)
 	{   //Creo un cliente de la los datos de clientes en "datosClientes.h"
 		miCliente = new cCliente(NOMBRES[cantClientesAgregados], DNIS[cantClientesAgregados], TELEFONOS[cantClientesAgregados]);
+		//Determino la fecha de inicio, fin y duracion del alquiler
+		cFecha* fechaInicio = new cFecha(), * fechaFin = new cFecha();
+		getFechasRandomNuevoAlquiler(fechaInicio, fechaFin);
 		//Busco un vehiculo de la categoria deseada
-		miVehiculo = miEmpresa->getVehiculoCategoria(CATEGORIAS[rand() % cantCATEGORIAS]);
+		miVehiculo = miEmpresa->getVehiculoCategoria((CATEGORIAS[rand() % cantCATEGORIAS]), fechaInicio, fechaFin);
 		//Si no encuentra un vehiculo disponible de la categoria deseada devuekve NULL
 		if (miVehiculo == NULL) {
 			cout << "No hay vehiculos disponibles de la categoria solicitada" << endl;
 			continue;
 		}
-		cFecha* fechaInicio = new cFecha(), *fechaFin = new cFecha();
-		//Determino la fecha de inicio, fin y duracion del alquiler
-		getFechasRandomNuevoAlquiler(fechaInicio, fechaFin);
 		miAlquiler = new cAlquiler(fechaInicio, fechaFin, miCliente, miVehiculo);
 		agregarElementosSeguridad(miAlquiler, miVehiculo);
 		try {
@@ -105,17 +105,18 @@ void diaSiguiente(cEmpresa* miEmpresa)
 		cout << ex->what() << endl;
 		delete ex;
 	}
-	
+
 	imprimirFechaActual();
 	if (alquileresQuitados == NULL)
-		cout << "\n\nNo hay ningún alquiler con fechaFin igual a la actual" << endl;
+		cout << "\n\n\tNo hay ningun alquiler con fechaFin igual a la actual" << endl;
 	else if (alquileresQuitados->getCA() == 0) {
-		cout << "\n\nNo hay ningún alquiler con fechaFin igual a la actual" << endl;
+		cout << "\n\n\tNo hay ningun alquiler con fechaFin igual a la actual" << endl;
 		delete alquileresQuitados;
 	}
 	else {
-		cout << "\n\nAlquileres finalizados hoy: \n" << alquileresQuitados->toString("\n\t") << endl; //Imprimimos los alquileres finalizados en la fecha 
+		cout << "\n\n\tAlquileres finalizados hoy: \n" << alquileresQuitados->toString("\n\t") << endl; //Imprimimos los alquileres finalizados en la fecha 
 		delete alquileresQuitados;
 	}
-	system("pause");
+	cout << endl << endl << "\tPresione una tecla para pasar al dia siguiente...";
+	getchar();
 }

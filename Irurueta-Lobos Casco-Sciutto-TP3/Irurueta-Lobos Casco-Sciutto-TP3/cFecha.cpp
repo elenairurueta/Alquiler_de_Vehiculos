@@ -241,6 +241,7 @@ void cFecha::incrementarFecha(short dia, short mes, short anio)
 		this->mes += mes;
 	this->anio += anio;
 	verificarFecha();
+
 }
 
 #pragma region toString e Imprimir
@@ -293,6 +294,13 @@ void cFecha::imprimir()
 	cout << toString() << endl;
 }
 #pragma endregion
+
+bool cFecha::operator>(cFecha* derecha) {
+	if (compararFechas(derecha) == -1)
+		return true;
+	else
+		return false;
+}
 ostream& operator<<(ostream& os, cFecha* fecha)
 {
 	os << fecha->toString();

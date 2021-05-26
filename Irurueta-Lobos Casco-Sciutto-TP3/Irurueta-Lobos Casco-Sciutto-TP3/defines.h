@@ -31,10 +31,10 @@
 #define PrecioCompraTRAFIC 12000
 #define PrecioCompraCAMIONETA 11000
 
-const string pasosMantenimientoAUTOMOVIL = "1. Luces\n2. Chasis\n3. Seguridad y Emergencia\n4. Sistema de dirección y Tren delantero\n5. Sistema de escape\n6. Sistema de Frenos\n7. Neumaticos\n8. Sistema de suspension";
-const string pasosMantenimientoMOTOCICLETA = "1. Espejos\n2. Luces\n3. Bocina\n4. Placa de dominio\n5. Nivel sonoro(escape)\n6. Emisión de gases(escape)\n7. Cubrecadena\n8. Chasis\n9. Frenos\n10. Neumáticos";
-const string pasosMantenimientoCAMIONETA = "1. Luces\n2. Chasis\n3. Seguridad y Emergencia\n4. Sistema de dirección y Tren delantero\n5. Sistema de escape\n6. Sistema de Frenos\n7. Neumaticos\n8. Sistema de suspension";
-const string pasosMantenimientoTRAFIC = "1. Luces\n2. Chasis\n3. Seguridad y Emergencia\n4. Sistema de dirección y Tren delantero\n5. Sistema de escape\n6. Sistema de Frenos\n7. Neumaticos\n8. Sistema de suspension";
+const string pasosMantenimientoAUTOMOVIL = "\n1. Luces\n2. Chasis\n3. Seguridad y Emergencia\n4. Sistema de direccion y Tren delantero\n5. Sistema de escape\n6. Sistema de Frenos\n7. Neumaticos\n8. Sistema de suspension";
+const string pasosMantenimientoMOTOCICLETA = "\n1. Espejos\n2. Luces\n3. Bocina\n4. Placa de dominio\n5. Nivel sonoro(escape)\n6. Emision de gases(escape)\n7. Cubrecadena\n8. Chasis\n9. Frenos\n10. Neumaticos";
+const string pasosMantenimientoCAMIONETA = "\n1. Luces\n2. Chasis\n3. Seguridad y Emergencia\n4. Sistema de direccion y Tren delantero\n5. Sistema de escape\n6. Sistema de Frenos\n7. Neumaticos\n8. Sistema de suspension";
+const string pasosMantenimientoTRAFIC = "\n1. Luces\n2. Chasis\n3. Seguridad y Emergencia\n4. Sistema de direccion y Tren delantero\n5. Sistema de escape\n6. Sistema de Frenos\n7. Neumaticos\n8. Sistema de suspension";
 
 const string CATEGORIAS[cantCATEGORIAS] = {
 	"automovil",

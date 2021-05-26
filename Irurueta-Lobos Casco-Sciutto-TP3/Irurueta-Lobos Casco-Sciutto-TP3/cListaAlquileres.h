@@ -15,7 +15,7 @@ public:
     //calcula la ganancia total de la lista de alquileres
     float calcularGananciaTotal();
     //devuelve true si el vehiculo pasado por parámetro se encuentra en alquiler, false si no
-    bool chequearVehiculoEnAlquiler(cVehiculo* vehiculoBuscar);
+    bool chequearVehiculoEnAlquiler(cVehiculo* vehiculoBuscar = NULL, cFecha* fechaInicio = NULL, cFecha* fechaFin = NULL);
     //quita todos los alquileres cuya fecha de fin es la pasada por parámetro, y los devuelve en una lista de alquileres
     cListaAlquileres* quitarPorFecha(cFecha* fecha);
 };

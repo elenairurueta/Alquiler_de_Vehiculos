@@ -45,6 +45,7 @@ void cEmpresa::mantenimiento(cVehiculo* vehiculo)
 {
 	if(vehiculo == NULL)
 		return;
+
 	if(listaAlquileres->chequearVehiculoEnAlquiler(vehiculo) == true){ //nos fijamos que el veh√≠culo no este alquilado
 		cout << "\n\nNo se puede realizar el mantenimiento del vehiculo " << vehiculo->getclave() << " porque se encuentra alquilado." << endl;
 		return;
@@ -93,36 +94,38 @@ cListaAlquileres* cEmpresa::terminarAlquileres(cFecha* fechaActual)//si concluy√
 }
 
 #pragma region Getters
-cVehiculo* cEmpresa::getVehiculoCategoria(string categoria)
+cVehiculo* cEmpresa::getVehiculoCategoria(string categoria, cFecha* fechaInicio, cFecha* fechaFin)
 {
+	if (fechaInicio == NULL || fechaFin == NULL)
+		return NULL;
 	//utilizamos dynamic_cast para fijarnos a que clase hija pertenece, devuelve NULL si no corresponde
 	for (int i = 0; i < listaVehiculos->getCA(); i++) {
 
 		if (categoria == "automovil") {
 			cAutomovil* ptrAutomovil = dynamic_cast<cAutomovil*>((*listaVehiculos)[i]);
 			if (ptrAutomovil != NULL) {
-				if(!listaAlquileres->chequearVehiculoEnAlquiler((*listaVehiculos)[i]))
+				if(!listaAlquileres->chequearVehiculoEnAlquiler((*listaVehiculos)[i], fechaInicio, fechaFin))
 					return (*listaVehiculos)[i];
 			}
 		}
 		else if (categoria == "camioneta") {
 			cCamioneta* ptrCamioneta = dynamic_cast<cCamioneta*>((*listaVehiculos)[i]);
 			if (ptrCamioneta != NULL) {
-				if (!listaAlquileres->chequearVehiculoEnAlquiler((*listaVehiculos)[i]))
+				if (!listaAlquileres->chequearVehiculoEnAlquiler((*listaVehiculos)[i], fechaInicio, fechaFin))
 					return (*listaVehiculos)[i];
 			}
 		}
 		else if (categoria == "motocicleta") {
 			cMotocicleta* ptrMotocicleta = dynamic_cast<cMotocicleta*>((*listaVehiculos)[i]);
 			if (ptrMotocicleta != NULL) {
-				if (!listaAlquileres->chequearVehiculoEnAlquiler((*listaVehiculos)[i]))
+				if (!listaAlquileres->chequearVehiculoEnAlquiler((*listaVehiculos)[i], fechaInicio, fechaFin))
 					return (*listaVehiculos)[i];
 			}
 		}
 		else if (categoria == "trafic") {
 			cTrafic* ptrTrafic = dynamic_cast<cTrafic*>((*listaVehiculos)[i]);
 			if (ptrTrafic != NULL) {
-				if (!listaAlquileres->chequearVehiculoEnAlquiler((*listaVehiculos)[i]))
+				if (!listaAlquileres->chequearVehiculoEnAlquiler((*listaVehiculos)[i], fechaInicio, fechaFin))
 					return (*listaVehiculos)[i];
 			}
 		}
@@ -136,6 +139,10 @@ cVehiculo* cEmpresa::getVehiculo(string clave)
 cListaAlquileres* cEmpresa::getListaAlquileres()
 {
 	return listaAlquileres;
+}
+cListaT<cVehiculo>* cEmpresa::getListaVehiculos()
+{
+	return listaVehiculos;
 }
 #pragma endregion
 
